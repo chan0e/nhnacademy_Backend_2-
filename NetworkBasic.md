@@ -1,7 +1,8 @@
 ## OSI 계층 구조
 ![OSI_계층구조](https://user-images.githubusercontent.com/94053008/223013555-203274fc-ffb7-47d1-b8fa-7f401e2527f9.png)
 
-(출처 - http://wiki.hash.kr/index.php/응용계층)
+
+Link: http://wiki.hash.kr/index.php/응용계층
 
 ## L7 응용 계층
 + 실제 네트워크 애플리케이션(프로세스)들이 다루는 영역
