@@ -4,7 +4,7 @@
 
 Link: http://wiki.hash.kr/index.php/응용계층
 
-## L7 응용 계층
+## L7 응용계층
 + 실제 네트워크 애플리케이션(프로세스)들이 다루는 영역
 + 이용자의 적용 업무를 처리하는데 필요한 모든 기능을 이용자측에서 정의하고. 처리하는 부분
 + 대표적인 프로토콜
@@ -13,7 +13,7 @@ Link: http://wiki.hash.kr/index.php/응용계층
 
 <img width="641" alt="image" src="https://user-images.githubusercontent.com/94053008/223012076-9686c33a-cec9-4e9a-bfc0-3755a1342e19.png">
 
-## DNS (Domain Name System)
+### DNS (Domain Name System)
  + 일종의 주소록
  + 분산 DB
    - 도메인 이름, IP 등을 서비스
@@ -34,4 +34,20 @@ Link: http://wiki.hash.kr/index.php/응용계층
  + Local DNS에 캐싱이 되어 있는 경우는 바로 응답
  + 캐싱이 되어 있지 않은 경우에는 Root, TLD, Authoratative DNS 순서에 질의하여 결과 응답
 
+
+## L4 전송계층
+ + 3계층인 네트워크 계층가 데이터를 전달할때 데이터가 제대로 도착했는지 확인
+ + 데이터가 최종적으로 도착할 애플리케이션이 무엇인지 식별
+
+
+### TCP / UDP 통신
+ + TCP(Transmission Control Protocol)
+   - 3-wat handshake를 사용해서 데이터를 보냄 (신뢰성)
+   - Port Number로 데이터의 목적지를 구분함 (식별성)
+
+ + UDP(User Datagram Protocol)
+   - 데이터를 전송할때 바로 보내줌으로 전송속도가 빠름
+   
+ 
+ 
 
