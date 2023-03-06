@@ -47,6 +47,14 @@ Link: http://wiki.hash.kr/index.php/응용계층
 
  + UDP(User Datagram Protocol)
    - 데이터를 전송할때 바로 보내줌으로 전송속도가 빠름
+
+
+## L3 네트워크계층
+ + 데이터를 전송, 경로를 결정한다.
+
+<img width="998" alt="image-2" src="https://user-images.githubusercontent.com/94053008/223033974-64892a92-4751-4348-9f81-ba05bc214bad.png">
+
+
    
  
  
