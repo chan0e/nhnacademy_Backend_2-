@@ -28,6 +28,7 @@ Link: http://wiki.hash.kr/index.php/응용계층
  + SRV: IP 외에 Port 번호까지 서비스 가능
 
 
+
 ### DNS QUERY FLOW
 <img width="596" alt="image-1" src="https://user-images.githubusercontent.com/94053008/223012978-cbf27374-6c6c-4d95-aa5c-bfe59d9c778d.png">
 
@@ -55,7 +56,20 @@ Link: http://wiki.hash.kr/index.php/응용계층
 <img width="998" alt="image-2" src="https://user-images.githubusercontent.com/94053008/223033974-64892a92-4751-4348-9f81-ba05bc214bad.png">
 
 
-   
- 
+## L2 링크계층
+ + 인정합 네트웤 노드낄 데이터를 전송하는 기능과 절차를 제공
+ + 물리 계층에서 발생할 수 있는 오류를 감지하고 수정 (대표적 Ethernet)
+
+<img width="1077" alt="images-redgem92-post-1504c0db-a218-4a3d-8ab5-415a252638d7-image" src="https://user-images.githubusercontent.com/94053008/223313934-ecc70d3b-d47d-4d94-b8c4-c96bcf573fa8.png">
+
+## 데이터 링크 주요기능
+
+   <img width="1059" alt="images-redgem92-post-84b196ac-bdfb-406a-8019-09a3f91cac08-image" src="https://user-images.githubusercontent.com/94053008/223314356-dc818ff0-35f9-420a-8089-becd2991fa4b.png">
+
++ 네트워크 계층에서 구성되는 데이터의 단위를 Datagram 이라고 한다.
+   - Header : 목적지, 출발지 주소 그리고 데이터 내용을 정의
+   - Trailer : 비트의 에러를 감지
+
++ 회선제어, 흐름제어, 오류제어 3가지 기능이 존재
  
 
