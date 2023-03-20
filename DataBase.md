@@ -53,5 +53,24 @@
 
 ![image](https://user-images.githubusercontent.com/94053008/226254629-d09cbdc5-f07d-4f80-be5d-ec830b26d333.png)
 
-+ ㄷ
++ 데이터 또는 정보를 설명하기 위한 표기법
+  - 데이터의 구조(Structure of the Data)
+  - 데이터에 대한 작업(Operations on the Data)
+  - 데이터에 대한 제약 조건(Constraints on the Data)
+
++ 주요 데이터 모델
+  - 관계 데이터 모델(Relational Data Model)
+  - 반정형 데이터 모델(Semi-Structured-data Model)
+ 
+ 
+ 
+ #### 트랜잭션(ACID)
+ 
+ + Atmoicity
+ + Consistency
+ + Isoloation
+ + Durability
+
+
+ 
 
