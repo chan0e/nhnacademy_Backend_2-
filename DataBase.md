@@ -167,6 +167,9 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
     - 관계 대수와 튜플 관계 해석에 기반한 질의 언어를 포함
     - DB에 튜플을 삽입, 삭제하며 수정하는 명령어를 포함
     - Select, Insert, Updata, Delete
+    
+  
+
 
     
  + 데이터 정의어(Data Definition Language, DDL)
@@ -175,9 +178,26 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
       명시하는 명령을 포함
     - Create, Alter, Drop, Rename, Truncate
 
+
+    + 생성
+      - CREATE TABLE {Table Name} (
+        [Column Name] [Data Type] {NULL | NOT NULL} {Column Option} {Constraint List} [Constraint definition]
+        )
+        
+    + 수정
+      - ALTER TABLE [TableName]
+        {ALTER COLUMN} [COLUMN NAME] {Column Option} {ADD} (Column | Constraints} 
+        {ADD Option} {DROP} (Column | Constraints} {DROP Option}
+        
+    + 삭제
+      - DROP TABLE [TableName]
+
  + 데이터 제어어(Data Control Language, DCL)
     - 테이블이나 뷰 등의 데이터에 대한 사용자의 접근을 제어하는 명령어를 포함
     - Grant, Revoke, Deny
+ 
+ 
+ 
  
  
  
