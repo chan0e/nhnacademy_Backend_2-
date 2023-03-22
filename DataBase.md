@@ -139,19 +139,45 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 
    + Union : 중복된걸 제외하고 테이블의 합
       - 결과 릴레이션에서 중복된 튜플들은 제외됨
+      - 두 테이블에 튜플의 갯수가 다르거나 도메인이 다르면 안됨
 
 
    + Intersection : 중복된것을 보여주는 테이블
       
    + Difference : A - B를 한 결과 테이블
    + Cartesian Product : A 테이블과 B 테이블의 튜플수를 곱한 테이블의 결과
-   + Join : 두 테이블들과의 결합
-     - Theta Join
-     - Equi Join
+   + Join : 두 테이블들과의 결합 (주키 테이블에서 외래키 테이블로 Join하는것이 속도가 빠름)
+     - Theta Join, Equi Join
+        - {=, <>, <=, <, >=, >} 중의 하나
+        - 동등 조인은 세타 조인 중에서 비교 연산자가 = 인 조인
+
      - Natural Join
+       
      - Outer Join
      - Semi Join
    + Division : 두 테이블과의 분할
+ 
+ 
+ 
+ ***
+ 
+ ### SQL 구성
+ 
+ + 데이터 조작어(Data Manipulation Language, DML)
+    - 관계 대수와 튜플 관계 해석에 기반한 질의 언어를 포함
+    - DB에 튜플을 삽입, 삭제하며 수정하는 명령어를 포함
+    - Select, Insert, Updata, Delete
+
+    
+ + 데이터 정의어(Data Definition Language, DDL)
+    - 릴레이션 스키마를 정의하고, 삭제하고 수정하는 명령어들을 제공
+    - DB에 저장될 데이터가 만족해야 할 무결정 제약조건을 명시하는 명령어와 릴레이션과 뷰 등에 접근하는 권한을 
+      명시하는 명령을 포함
+    - Create, Alter, Drop, Rename, Truncate
+
+ + 데이터 제어어(Data Control Language, DCL)
+    - 테이블이나 뷰 등의 데이터에 대한 사용자의 접근을 제어하는 명령어를 포함
+    - Grant, Revoke, Deny
  
  
  
