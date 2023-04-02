@@ -268,3 +268,39 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 ```
+
+## Fetch
++ fetch 매서드는 JavaScript에서 서버로 네트워크 요청을 보내고 응답을 받을 수 있도록 해주는 method
++ +XMLHttpRequest와 비슷하지만 fetch는 Promise를 기반으로 구성되어 있어서 더 간편하게 사용할 수 있다는 차이점이 있음
+
+> Fetch를 이용한 코드 예제
+
+```javascript
+async function Signup(userid,username,userpassword1){
+    const url = "URL 작성"
+
+    const data = {
+        userId: userid,
+        userName: username,
+        userPassword: userpassword1
+    }
+
+    const options = {
+        method: 'POST',
+        
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+
+    const SingCheck = await fetch(url,options);
+
+    if (!SingCheck.ok) {
+        throw new Error("SingCheck Error");
+    }
+
+}
+```
++ async가 있는 함수는 비동기 처리가 된다
++ async가 있는 함수에는 await를 사용 할 수 있게 된다
