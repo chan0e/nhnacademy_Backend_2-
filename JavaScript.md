@@ -235,3 +235,36 @@ const xhr = new XMLHttpRequest();
 xhr.open(method, URL)
 ```
 
+## Promise
++ Promise는 프로미스가 생성된 시점에는 알려지지 않았을 수도 있는 값을 위한 대리자로,
+비동기 연산이 종료된 이후에 결과 값과 실패 사유를 처리하기 위한 처리기를 연결할 수 있음
++ Promise룰 사용하면 비동기 메서드에서 마치 동기 메서드처럼 값을 반환가능
++ 다만 최종 결과를 반환하는 것이 아니고, 미래의 어떤 시점에 결과를 제공하겠다는 '약속'(프로미스)을 반환
+
+>5 resolve , 5<= reject 호출 하는 예제
+```javascript
+// Promise 객체의 생성
+const promise = new Promise((resolve, reject) => {
+setTimeout(function(){
+    const num =  getRandomInt(10);
+    if(num>5){
+        resolve(num);
+    }else{
+        reject(num);
+    }
+
+},1000);
+
+}).then(result=>{
+    console.log("success",result)
+})
+.catch(result=>{
+    console.log("error:",result);
+}).finally(function(){
+    console.log("무조건 실행");
+});
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+```
