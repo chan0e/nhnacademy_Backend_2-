@@ -1,5 +1,5 @@
 ### JavaScript
-+웹 서버가 아닌 클라이언트 컴퓨터에 설치된 브라우저에서 실행되는  클라이언트 스크립트 언어
++ 웹 서버가 아닌 클라이언트 컴퓨터에 설치된 브라우저에서 실행되는  클라이언트 스크립트 언어
 + 웹 페이지에 기능을 더해 동적인 HTML 페이지를 만들 수 있음
 
 + WEB API
@@ -102,8 +102,52 @@ html 문서가 로딩되기전에 실행
   + var
     - 변수의 중복선언 가능 ( 에러발생하지 않음)
 
-  + const
+  + const (Immutable)
     - 변수 재 선언이 되지 않음
-    - 변수 재할당 불가능 (할당된 객체의 내용은 
+    - 변수 재할당 불가능 (할당된 객체의 내용은 변경가능)
+    - 반드시 선언과 초기화를 동시에 진행
 
-  + let
+  + let (mutable)
+    -  변수 재 선언이 되지 않음
+    -  변수 재 할당 가능
+
+
+## DOM(Document Object Model)
++ 웹 페이지를 이루는 테그들을 자바스크립트가 이용 할 수 있게끔 브라우저가 트리구조로 만든 객체 모델
++ DOM은 자체로 수행을 완료할 수 있는 것이 아니라 자바스크립트가 DOM을 제어할 수 있도록 이벤트를 발생시키거나 객체에 접근하기 위한 경로를 제공 
++ 자바스크립트는 DOM이 제공하는 메서드와 프로퍼티를 사용하여 데이터를 추출하거나 발생한 이벤트를 받아 추가적인 처리를 수행
++ html 문서를 javascript를 통해서 접근할 수 있도록 트리 구조로 구조화한 객체 모델
+
+![image](https://user-images.githubusercontent.com/94053008/229350942-432814c6-bd13-4a5f-86b4-df82299d6925.png)
+
+(출처 - nhnacademy)
+
+
++ create element, append element
+
+```javascript
+const divElement = document.createElement("div");
+divElement.id="myDiv";
+divElement.innerHTML = 'div element!';
+document.body.appendChild( divElement );
+const textNode = document.createTextNode('text node!');
+divElement.appendChild(textNode);
+const myDiv = document.getElementById("myDiv");
+myDiv.setAttribute("style","color:red");
+```
+
++ getElementsById
+
+```javascript
+const h1Element = document.createElement("h1");
+h1Element.id="heading";
+h1Element.innerHTML = 'H1 element!';
+document.body.appendChild(h1Element);
+const h1 = document.getElementById("heading");
+console.log("h1:" + h1);
+```
+
+####
+
+
+
