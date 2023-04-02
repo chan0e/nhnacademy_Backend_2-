@@ -73,5 +73,13 @@ html 문서가 로딩되기전에 실행
 + html문서와 javascript 의존성이 있다면(UI) 정상적인 화면을 제공해주기 위해서 서버에서 해당 javascript를 다운로드 후 실행하는 딜레이가 발생
 
 + async
+  - 일반 스크립트에 async 속성이 존재하면 HTML 구문 분석 중에도 스크립트를 가져오며, 사용 가능해지는 즉시 평가를 수행
+
++ defer 
+  - 브라우저가 스크립트를 문서 분석 이후에,  DOMContentLoaded 발생 이전에 실행해야 함을 나타내는 불리언 속성
+  - defer 속성을 가진 스크립트는 자신의 평가가 끝나기 전까지 DOMContentLoaded 이벤트의 발생을 막음.
+
+![image](https://user-images.githubusercontent.com/94053008/229350536-f9eb33ad-6c22-4f9d-8e6f-2a29bfbfeedc.png)
+
 
 
