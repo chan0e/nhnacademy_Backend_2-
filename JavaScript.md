@@ -49,9 +49,29 @@ console.timeEnd("sum");
 
 ```
 
-+ html 문서가
+html 문서가 로딩되기전에 실행
 
+
+
++ body 직전에 호출하는 방법
 
 ```javascript
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1> hello world </h1>
+        <script src="main2.js"></script>
+    </body>
+
+</html>
 
 ```
++ 사용자가 빠르게 기본적인 html 문서를 볼 수 있음
++ html문서와 javascript 의존성이 있다면(UI) 정상적인 화면을 제공해주기 위해서 서버에서 해당 javascript를 다운로드 후 실행하는 딜레이가 발생
+
++ async
+
+
