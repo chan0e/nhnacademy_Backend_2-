@@ -21,12 +21,35 @@
 
 ```javascript
 
+console.time("sum");
+let sum = 0;
+for(let i=0; i<1000; i++){
+    sum = sum + i;
+}
+console.timeEnd("sum");
+
 ```
+
+### script를 포함하는 방법
+
++ head에 script를 포함하는 방법
 
 
 ```javascript
+<html>
+    <head>
+       <script src="main2.js"></script>
+    </head>
+
+    <body>
+        <h1> hello world </h1>
+    </body>
+
+</html>
 
 ```
+
++ html 문서가
 
 
 ```javascript
