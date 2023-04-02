@@ -217,4 +217,21 @@ console.log(typeof tempStr);
 
 ```
 
+## XHR
++ XMLHttpRequest (XHR) 객체는 서버와 상호작용할 때 사용 
++ XHR을 사용하면 페이지의 새로고침 없이도 URL에서 데이터를 가져올 수 있음
++ 이를 활용하면 사용자의 작업을 방해하지 않고 페이지의 일부를 업데이트할 수 있음
+
+
++ 생성
+```javascript
+const xhr = new XMLHttpRequest();
+```
+
++ 초기화
+  - method. : GET, POST, PUT, DELETE ...
+  - URL : 호출할 url
+```javascript
+xhr.open(method, URL)
+```
 
