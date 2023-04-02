@@ -81,5 +81,20 @@ html 문서가 로딩되기전에 실행
 
 ![image](https://user-images.githubusercontent.com/94053008/229350536-f9eb33ad-6c22-4f9d-8e6f-2a29bfbfeedc.png)
 
+(출처 - nhnacademy)
 
+### use strict
++ 기존에 조용히 무시되던 에러들을 throwing 합니다.
++ JavaScript 엔진의 최적화 작업을 어렵게 만드는 실수들을 바로잡습니다. 가끔씩 엄격 모드의 코드는 비 - 엄격 모드의 동일한 코드보다 더 빨리 작동하도록 만들어짐
++ 엄격 모드는 ECMAScript의 차기 버전들에서 정의 될 문법을 금지
++ 비상식적인 문법들을 사용할 수 없도록 막아주는 역할
+  - 변수의 중복선언
+  - 변수의 초기화 없이 사용
+  - 할당된 property 변경
+
+```javascript
+// 전체 스크립트 엄격 모드 구문
+'use strict';
+ var v = "Hi!  I'm a strict mode script!";
+```
 
