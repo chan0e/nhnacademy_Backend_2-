@@ -50,4 +50,11 @@
     <url-pattern>/hello</url-pattern>
 </servlet-mapping>
 
-``
+```
+
+
+## WAS(Web Application Server)
++ 주로 정적 웹 콘텐츠를 처리하는 웹서버와 구분하기 위한 용도
++ Servlet Container, EJB Container 등의 역할을 수행
++ 동적 웹 콘텐츠를 생성하기 위한 Web Application과 Server 환경을 만들어 동작시키는 기능을 제공
+
