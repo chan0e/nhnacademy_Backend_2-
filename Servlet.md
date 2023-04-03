@@ -8,6 +8,21 @@
 + 웹 컨테이너는 웹 컴포넌트 자바 EE 아키텍처 제약을 구현하고, 보안, 병행성(concurrency), 생명주기 관리, 트랜잭션, 배포 등 다른 서비스를 포함하는 웹 컴포넌트의 실행 환경을 명세한다(specify).
 
 
+![image](https://user-images.githubusercontent.com/94053008/229395839-36fc630b-3e60-44f8-92b4-cf6a751c1239.gif)
+
+Servlet Lifecycle (이미지 출처: oracle.com'Java Servlet API Specification')
+
+
+
+
+
+
+
+
+
+
+
+
 ### Intellij에서 maven 프로젝트 생성 방법
 
 ![image](https://user-images.githubusercontent.com/94053008/229394336-9a5ed617-85f9-4562-b6be-d6fb24ef5c00.png)
