@@ -44,6 +44,7 @@ Servlet Lifecycle (이미지 출처: oracle.com'Java Servlet API Specification')
  <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
+        //java EE 8 을 선택해서 하면 1.8로 되어있음
         //1.8을 11로 고쳐줌
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
@@ -73,3 +74,8 @@ Servlet Lifecycle (이미지 출처: oracle.com'Java Servlet API Specification')
 + Servlet Container, EJB Container 등의 역할을 수행
 + 동적 웹 콘텐츠를 생성하기 위한 Web Application과 Server 환경을 만들어 동작시키는 기능을 제공
 
+## Java logging
+
+## Cookie
+
+## Session
