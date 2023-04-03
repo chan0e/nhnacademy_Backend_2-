@@ -12,9 +12,42 @@
 
 ![image](https://user-images.githubusercontent.com/94053008/229394336-9a5ed617-85f9-4562-b6be-d6fb24ef5c00.png)
 
+
+
+
+
+![image](https://user-images.githubusercontent.com/94053008/229394570-c1ef62eb-c440-44df-b759-0215c4bca956.png)
+
+
+
+
 + pom.xml 설정
 
 ```servlet
 
 
+ <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        //1.8을 11로 고쳐줌
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <junit.version>5.9.1</junit.version>
+ </properties>
 ```
+
++ web.xml 설정
+
+```servlet
+
+<servlet>
+    <servlet-name>helloServlet</servlet-name>
+    <servlet-class>com.nhnacademy.hello.HelloServlet</servlet-class>
+</servlet>
+    
+<servlet-mapping>
+    <servlet-name>helloServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+</servlet-mapping>
+
+``
