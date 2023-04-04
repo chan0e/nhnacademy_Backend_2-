@@ -110,12 +110,57 @@ rd.include(request, response);
 ## Servlet Filter
 + 지정한 URL 패턴에 해당하는 요청에 대해
   - 서블릿 실행 전 후에
-  - 해당 요청이나 응답ㅇ 공통적으로 적용할 작업을 수행하느 객체
+  - 해당 요청이나 응답에 공통적으로 적용할 작업을 수행하는 객체
 + 필터 체인 형태로 제공
 
 ![AyxEp2j8B4hCLKXAJCvEByelpKjnpi_9Br8eAKhCAmPAfUQLS4MxPUQKf1Of6CR2cKP0Pd1gKLbEQaai5vU6Kr5-UN5gaIOIKq7NJW6BHiDO1Jqx1OG6974a3KR8De4bu9OXYUkXsW1JWYmED0W0](https://user-images.githubusercontent.com/94053008/229658299-3257707a-7355-470d-b1f4-055fc58ba30e.png)
 
+>Filter는 일종의 체인 형태로 동작합니다. 
+클라이언트가 서버에 요청을 보내면, 이 요청은 Filter 체인의 맨 앞에서부터 순차적으로 각 Filter를 거치며 필터링됩니다. 
+필터링은 일반적으로 요청과 응답의 헤더와 바디를 수정하거나, 인증과 권한 부여를 위한 처리, 요청과 응답에 대한 로깅 등의 작업을 수행
 
+>Filter는 다음과 같은 장점을 제공
+ - 중복 코드 제거: 여러 서블릿에서 공통으로 사용되는 코드를 Filter로 분리하여 중복을 제거할 수 있습니다.
+ - 보안 강화: Filter를 이용하여 모든 요청에 대한 보안 검사나 인증 처리 등을 통합적으로 수행할 수 있습니다.
+ - 코드 가독성 향상: 서블릿 코드에서 비즈니스 로직과 관계 없는 처리를 Filter로 분리하여 코드 가독성을 향상시킬 수 있습니다.
 
+```javascript
+public class CharacterEncodingFilter implements Filter {
+
+    private  String encoding;
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        Filter.super.init(filterConfig);
+        encoding = filterConfig.getInitParameter("encoding");
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+            servletRequest.setCharacterEncoding(encoding);
+            filterChain.doFilter(servletRequest,servletResponse);
+            servletResponse.setCharacterEncoding(encoding);
+
+    }
+}
+```
+
++ web.xm 설정
+
+```
+<filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>com.nhnacademy.hello.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+```
 
 
