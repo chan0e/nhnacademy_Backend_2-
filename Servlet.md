@@ -170,7 +170,7 @@ public class CharacterEncodingFilter implements Filter {
 
 ## Listner
 + Servlet Container가 수행한 특정한 이벤트를 감지하여
-그 이벤틍 대해 별도으 작업을 수행하느 객체
+그 이벤트 대해 별도의 작업을 수행하는 객체
 
 ![image](https://user-images.githubusercontent.com/94053008/229667887-390ebe30-2c83-463e-8963-2baf35d36a40.png)
 
