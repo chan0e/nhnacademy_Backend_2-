@@ -224,4 +224,4 @@ MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식
 
 
 ## JSP
-+ HTML 
++ HTML이나 xml 
