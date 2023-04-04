@@ -168,7 +168,7 @@ public class CharacterEncodingFilter implements Filter {
 + Filter를 이용해 로그인 여부 처리도 가능
 
 
-## Listner
+## Listener
 + Servlet Container가 수행한 특정한 이벤트를 감지하여
 그 이벤트 대해 별도의 작업을 수행하는 객체
 
@@ -184,4 +184,7 @@ public class CharacterEncodingFilter implements Filter {
 ```
 
 ### enc-type: HTML form content-type
-+ 
++ 폼 데이터가 서버로 제출될 때 해당 데이터가 인코딩되는 방법을 명시
++ method='post' 일 때만 사용할 수 있음
+
+###
