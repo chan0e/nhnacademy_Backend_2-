@@ -187,4 +187,17 @@ public class CharacterEncodingFilter implements Filter {
 + 폼 데이터가 서버로 제출될 때 해당 데이터가 인코딩되는 방법을 명시
 + method='post' 일 때만 사용할 수 있음
 
-###
+### 속성값
++ application/x-www-form-urlencoded
+  - default
+  - key=value&key=value&...
+  - 모든 데이터(문자)은 서버로 보내기 전에 인코딩됨을 명시함.
++ multipart/form-data
+  - 모든 문자를 인코딩하지 않음을 명시함.
+  - 파일이나 ASCII가 아닌 문자열, 바이너리 데이터 전송 시 multipart/form-data를 사용
+  - multipart/form-data의 컨텐트는 multipart MIME 데이터의 모든 규칙을 따름
++ text/plain
+  - 공백 문자(space)는 "+" 기호로 변환하지만, 나머지 문자는 모두 인코딩되지 않음을 명시함.
+
+### MIME (Multipurpose Internet Mail Extensions)
++ 
