@@ -221,3 +221,7 @@ MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식
 위와 같은 MIME 타입은 서블릿과 JSP에서 응답(Response)을 생성할 때 Content-Type 헤더에 설정하여 클라이언트(웹 브라우저)가 올바르게 인식하도록 해야 함
 
 ```
+
+
+## JSP
++ HTML 
