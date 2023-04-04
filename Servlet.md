@@ -219,4 +219,5 @@ MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식
 - application/octet-stream : 이진 파일을 나타내는 MIME 타입입니다. 예를 들어, 파일 다운로드 기능을 구현할 때 사용
 
 위와 같은 MIME 타입은 서블릿과 JSP에서 응답(Response)을 생성할 때 Content-Type 헤더에 설정하여 클라이언트(웹 브라우저)가 올바르게 인식하도록 해야 함
+
 ```
