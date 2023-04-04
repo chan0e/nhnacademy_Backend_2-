@@ -163,4 +163,5 @@ public class CharacterEncodingFilter implements Filter {
 </filter-mapping>
 ```
 
++ Filter를 이용해 로그인 여부 처리도 가능
 
