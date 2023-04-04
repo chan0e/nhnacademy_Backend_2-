@@ -200,4 +200,23 @@ public class CharacterEncodingFilter implements Filter {
   - 공백 문자(space)는 "+" 기호로 변환하지만, 나머지 문자는 모두 인코딩되지 않음을 명시함.
 
 ### MIME (Multipurpose Internet Mail Extensions)
-+ 
++ 전자 우편을 위한 인터넷 표준 포맷 이메일 메세지의 형식을 확장해서 ASCII 이외의 문자셋으로 표현된 텍스트를 지원함
++ 오디오, 비디오, 이미지, 애플리케이션 프로그램 등을 첨부할 수 있도록 하기 위한 인터넷 표준
++ MIME 형식의 이메일 메세지는 SMTP나 POP, IMAP과 같은 표준 프로토콜로 전송
+
+```
+MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식을 구분하기 위해 사용
+
+자주사용하는 MIME TYPE
+
+- text/html : HTML 문서를 나타내는 MIME 타입입니다. 웹 브라우저에서 HTML 문서를 받을 때 사용
+- text/plain : 일반 텍스트를 나타내는 MIME 타입입니다. 예를 들어, 서블릿에서 출력하는 일반 텍스트 메시지를 브라우저에서 받을 때 사용
+- image/jpeg : JPEG 형식의 이미지를 나타내는 MIME 타입입니다. 웹 페이지에서 이미지를 보여줄 때 사용
+- image/png : PNG 형식의 이미지를 나타내는 MIME 타입입니다. JPEG 대신 PNG를 사용하면 이미지의 투명도와 압축률이 더 좋아지는 등의 이점이 있음
+- application/pdf : PDF 문서를 나타내는 MIME 타입입니다. 웹 페이지에서 PDF 문서를 보여줄 때 사용
+- application/json : JSON 데이터를 나타내는 MIME 타입입니다. 웹 페이지에서 JSON 데이터를 전송하거나 받을 때 사용
+- application/xml : XML 데이터를 나타내는 MIME 타입입니다. 웹 페이지에서 XML 데이터를 전송하거나 받을 때 사용
+- application/octet-stream : 이진 파일을 나타내는 MIME 타입입니다. 예를 들어, 파일 다운로드 기능을 구현할 때 사용
+
+위와 같은 MIME 타입은 서블릿과 JSP에서 응답(Response)을 생성할 때 Content-Type 헤더에 설정하여 클라이언트(웹 브라우저)가 올바르게 인식하도록 해야 함
+```
