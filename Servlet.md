@@ -175,3 +175,13 @@ public class CharacterEncodingFilter implements Filter {
 ![image](https://user-images.githubusercontent.com/94053008/229667887-390ebe30-2c83-463e-8963-2baf35d36a40.png)
 
 
+
+## Form
+```html
+<form method='post' action='/login' enctype=''>
+<!-- ... -->
+</form>
+```
+
+### enc-type: HTML form content-type
++ 
