@@ -1,3 +1,5 @@
+###### 사진출처 - nhnacademy
+
 ## Servlet
 
 ### Servlet Container 
@@ -164,4 +166,12 @@ public class CharacterEncodingFilter implements Filter {
 ```
 
 + Filter를 이용해 로그인 여부 처리도 가능
+
+
+## Listner
++ Servlet Container가 수행한 특정한 이벤트를 감지하여
+그 이벤틍 대해 별도으 작업을 수행하느 객체
+
+![image](https://user-images.githubusercontent.com/94053008/229667887-390ebe30-2c83-463e-8963-2baf35d36a40.png)
+
 
