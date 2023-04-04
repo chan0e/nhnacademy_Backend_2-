@@ -95,4 +95,27 @@ RequestDispatcher 인터페이스는 forward()와 include() 두 가지 메서드
 이를 통해 웹 애플리케이션에서 유연한 처리가 가능해지며, 코드의 재사용성이 높아짐
 
 
+```javascript
+RequestDispatcher rd = request.getRequestDispatcher("/login");
+
+//사용
+rd.forward(request, response);
+
+rd.include(request, response);
+
+```
+
+- browser 새로고침 -> request 객체가 유지됨
+
+## Servlet Filter
++ 지정한 URL 패턴에 해당하는 요청에 대해
+  - 서블릿 실행 전 후에
+  - 해당 요청이나 응답ㅇ 공통적으로 적용할 작업을 수행하느 객체
++ 필터 체인 형태로 제공
+
+![AyxEp2j8B4hCLKXAJCvEByelpKjnpi_9Br8eAKhCAmPAfUQLS4MxPUQKf1Of6CR2cKP0Pd1gKLbEQaai5vU6Kr5-UN5gaIOIKq7NJW6BHiDO1Jqx1OG6974a3KR8De4bu9OXYUkXsW1JWYmED0W0](https://user-images.githubusercontent.com/94053008/229658299-3257707a-7355-470d-b1f4-055fc58ba30e.png)
+
+
+
+
 
