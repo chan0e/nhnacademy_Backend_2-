@@ -82,3 +82,17 @@ Servlet Lifecycle (이미지 출처: oracle.com'Java Servlet API Specification')
 
 
 ## RequestDispatch
++ 현재의 요청에 대한 정보를 저장했다가 다른 자원(servelt, jsp, html 등) 으로 전달(forward, include) 하는기능을 제공
+
+> RequestDispatcher는 같은 웹 애플리케이션 내에서 다른 리소스로 요청을 전달하거나 포함하는 데 사용되는 객체 
+이는 Servlet API의 일부이며 웹 애플리케이션에서 Model-View-Controller (MVC) 아키텍처를 구현하는 데 일반적으로 사용
+
+RequestDispatcher 인터페이스는 forward()와 include() 두 가지 메서드를 제공 
+ - forward() 메서드는 JSP 페이지와 같은 다른 리소스로 제어를 전송하는 데 사용 
+ - include() 메서드는 다른 리소스의 출력을 현재 페이지의 출력에 포함시키는 데 사용
+
+즉, RequestDispatcher는 다른 페이지나 서블릿으로 현재 요청을 보내거나 다른 페이지나 서블릿의 출력을 현재 페이지에 포함시키는 데 사용. 
+이를 통해 웹 애플리케이션에서 유연한 처리가 가능해지며, 코드의 재사용성이 높아짐
+
+
+
