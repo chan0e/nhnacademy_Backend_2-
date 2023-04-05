@@ -227,3 +227,5 @@ MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식
 + HTML이나 XML 등을 기반으로 Java 코드를 삽입하여
 + 웹 서버에서 동적으로 웹 페이지를 생성할 수 있도록 해주는 서버 사이드 스크립트
 + 언어 역시 Java EE 아키텍처
+
+## JSTL
