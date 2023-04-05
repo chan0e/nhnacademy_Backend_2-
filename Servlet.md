@@ -77,11 +77,26 @@ Servlet Lifecycle (이미지 출처: oracle.com'Java Servlet API Specification')
 + 동적 웹 콘텐츠를 생성하기 위한 Web Application과 Server 환경을 만들어 동작시키는 기능을 제공
 
 ## Java logging
++ 6 fatal : error 보다 더 심각한 오류를 출력
++ 5 error : 오류 출력
++ 4 warn : 경고 정보를 출력
++ 3 info : 일반적인 정보 출력
++ 2 debug : 디버깅 목적으로 사용
++ 1 trace : debug 보다 더 상세한 정보를 나타낼 경우에 사용.
+
+
 
 ## Cookie
+사용자가 웹사이트를 방문할 때
+해당 웹사이트의 웹서버에 의해 생성되어
+사용자의 브라우저에 저장되는
+작은 데이터 블록
 
 ## Session
-
+상태가 없는 (stateless) http 프로토콜 상에서
+일정 시간동안
+같은 사용자로부터의 여러 요청을
+하나의 상태로 유지시키는 기술
 
 ## RequestDispatch
 + 현재의 요청에 대한 정보를 저장했다가 다른 자원(servelt, jsp, html 등) 으로 전달(forward, include) 하는기능을 제공
