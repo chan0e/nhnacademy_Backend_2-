@@ -244,3 +244,13 @@ MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식
 + 언어 역시 Java EE 아키텍처
 
 ## JSTL
+
+
+##MVC
+
+![image](https://user-images.githubusercontent.com/94053008/229961624-3c07eff8-e885-47e9-b7a7-fcf753e15a92.png)
+
++ Model: 비즈니스 로직 및 데이터 처리 담당
++ View: 모델이 처리한 결과 데이터의 화면 생성 담당
++ Controller: 요청 처리 및 흐름 제어 담당
+
