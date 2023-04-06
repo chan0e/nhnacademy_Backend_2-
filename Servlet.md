@@ -246,11 +246,28 @@ MIME(Multipurpose Internet Mail Extensions) 타입은 웹에서 파일의 형식
 ## JSTL
 
 
-##MVC
+## MVC
 
 ![image](https://user-images.githubusercontent.com/94053008/229961624-3c07eff8-e885-47e9-b7a7-fcf753e15a92.png)
 
 + Model: 비즈니스 로직 및 데이터 처리 담당
 + View: 모델이 처리한 결과 데이터의 화면 생성 담당
 + Controller: 요청 처리 및 흐름 제어 담당
+
+## Command 패턴으로 추상화
++ Command 패턴은 객체 지향 디자인 패턴 중 하나로, 요청을 객체로 캡슐화하여 요청을 수신하는 객체가 이를 처리할 수 있도록 하는 패턴
+  - Command: 요청을 캡슐화하는 인터페이스를 정의. Command 인터페이스는 execute() 메서드를 선언
+  - ConcreteCommand: Command 인터페이스를 구현한 구체적인 클래스. execute() 메서드를 구현항 실제 요청 처리를 수행
+  - Invoker: 요청을 수신하는 객체를 정의. Invoker Command 객체를 유지, execute() 메서드를 호출항 요청을 처리
+  - Receiver: 실제 요청 처리를 수행하는 객체. ConcreteCommand는 Receiver 객체를 호출하여 실제 요청 처리를 수행
+
++ Command 패턴의 이점
+  - 요청 처리 과정을 캡슐화하므로, 요청 처리 과정의 변경이나 확장에 유연하게 대응
+  - 요청 처리에 대한 로깅, 취소, 다시 실행 등의 기능을 구현하기 쉬움
+  - 객체 간의 의존성을 줄일 수 있으며, 객체 간의 결합도르 낮출 수 있음
+  
+  ![image](https://user-images.githubusercontent.com/94053008/230244706-a7a20876-9b79-47fe-bd1c-dd27b5937451.png)
+
+  
+  
 
