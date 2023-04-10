@@ -31,5 +31,14 @@
 + POJO(Plain Old Java Object) 기반의 FrameWork
   - 특정한 인터페이스를 구현하거나 상속을 받을 필요가 없음
 
-+ 제어 역전(IoC: Inversion of Control)
-  - 
+### 제어 역전(IoC: Inversion of Control)
+  + 제어의 주도권이 개발자가 아니라 FrameWork에 있어 필요에 따라 Spring에서 사용자의 코드를 호출한다.
+  + 의존성 주입(DI: Dependency Injection)
+
+### 관점 지향 프로그래밍(AOP: Aspect-Oriented Programming) 을 지원
+  + 복잡한 비지니스 영역의 문제와 공통된 지원 영역의 문제를 분리
+
+### 영속성과 관련된 다양한 서비스 지원
+
+### 전자정부 표준 프레임워크를 따름
+
