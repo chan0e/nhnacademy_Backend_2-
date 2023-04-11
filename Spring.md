@@ -233,6 +233,54 @@ public class A {
 + autowired injection 의 방식
 	- byType
 	- byName
-	- contractor
+	- contructor
 
 
+#### byType
+``` java
+<!--    byType으로 autowire 를 하려면 해당되는 type 의 bean 이 1개만 존재해야 합니다.-->
+<!--    <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter" scope="singleton">-->
+<!--    </bean>-->
+
+    <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter" scope="prototype">
+    </bean>
+
+    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" autowire="byType">
+    </bean>
+
+```
+
+
+#### byName
+
+```java
+   <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter" scope="singleton">
+    </bean>
+
+    <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter" scope="prototype">
+    </bean>
+
+     <!-- 관례적으로 set~ 하고 id 첫번째 문자를 대문자로 바꿔서 매핑해준다. 따라서 맨처음 알파벳은 소문자로 해줘야 함 이유는 관례적인것...   -->
+    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" autowire="byName">
+    </bean>
+```
+
+```java
+public class GreetingService {
+    private Greeter greeter;
+
+    public void setKoreanGreeter(Greeter greeter) {
+        System.out.println("setGreeter invoked!");
+        this.greeter = greeter;
+    }
+
+    // 기본 생성자가 필요하기 때문에 아래는 주석처리
+//    public GreetingService(Greeter greeter) {
+//        this.greeter = greeter;
+//    }
+
+    public void greet() {
+        greeter.sayHello();
+    }
+}
+```
