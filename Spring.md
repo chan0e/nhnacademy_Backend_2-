@@ -187,7 +187,7 @@ public class A {
 
 
 #### Contructor Injection
-+ 생성자 주입 방식으 사용하여 , GreetingService 스프링 빈에 Greeter 스프링 빈을 주입하는 예제
++ 생성자 주입 방식을 사용하여 , GreetingService 스프링 빈에 Greeter 스프링 빈을 주입하는 예제
 
 ```java
 // 생성자 주입 방식을 사용하므로, 주입 대상 스프링빈에 적절한 생성자가 필요하다.
@@ -206,5 +206,33 @@ public class A {
 #### Setter Injection
 + setter method를 이용하여 의존성 주입
 
+``` java
+//    final keyword 이므로 객체를 생성한뒤 greeter 변수에 값을 할당할 수 없다.
+//    private final Greeter greeter;
+    private Greeter greeter;
+
+//    Setter Injection 기본 생성자가 필요하다.
+    public GreetingService() {
+    }
+    
+    public void setGreeter(Greeter greeter) {
+        System.out.println("setGreeter invoked!");
+        this.greeter = greeter;
+    }
+```
+
+
+``` java
+ <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >
+        <property name="greeter" ref="koreanGreeter" />
+    </bean>
+```
+
+#### Autowired Injection
++ autowired 속성을 사용하여 자동으로 주입
++ autowired injection 의 방식
+	- byType
+	- byName
+	- contractor
 
 
