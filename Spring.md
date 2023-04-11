@@ -70,4 +70,100 @@
 + 상위 컨텍스트에서 상속기능
 
 ## 의존성(Dependency)
-+ ㅋ
++ 코드에서 두 모듈간의 연결, 관계
+	- 의존관계(Dependency)
+	  - A class가 B class를 일시적으로 참조하는 형태 
+
+``` java
+public class B {
+    private int numB;
+    
+    public int getNumB() {
+      return this.numB;
+    }
+}
+
+public class A {
+    private int numA;
+    
+    // add 메소드가 반환한 이후에는 B 클래스의 b 객체는 제거된다. 
+    public int add(B b) {
+      return numA + b.getNumB();
+    }
+}
+```
+
+- 연관관계(Association)
+  - 클래스 필드로 다른 클래스의 객체를 가지고 있는 관계
+``` java
+public class B {
+    private int numB;
+    
+    public int getNumB() {
+      return this.numB;
+    }
+}
+
+public class A {
+    private int numA;
+    private B b;
+    
+    // add 메소드가 반환한 이후에도 B 클래스의 b 객체는 여전히 남아 있다.
+    public int add() {
+      return numA + this.b.getNumB();
+    }
+}
+
+```
+
+  
+- 집합관계(Aggregation)
+  - 클래스 A와 클래스 B의 생명주기가 일치하지않는다
+
+``` java
+public class B {
+    private int numB;
+    
+    public int getNumB() {
+      return this.numB;
+    }
+}
+
+public class A {
+    private int numA;
+    private B b;
+    
+    public A(B externalB) {
+        this.b = externalB;
+    }
+}
+```
+
+- 합성관계
+  - 클래스 A와 클래스 B의 생명주기가 일치한다
+```java
+public class B {
+}
+
+public class A {
+    private B b;
+    
+    public A() {
+        this.b = new B();
+    }
+}
+```
+
+## 의존성 주입(Dependency Injection)
++ DI
+   - Ioc 의 패턴중에 하나
+   - Object 간의 의존성을 낮춘다
+   - 외부에서 객체르 생성하고 전달한다
+
+
+### Dependency Inversion Princlple
+
+![image](https://user-images.githubusercontent.com/94053008/231049905-21741e44-1db6-43e4-8b9b-0ef603a061bf.png)
+
+
+
