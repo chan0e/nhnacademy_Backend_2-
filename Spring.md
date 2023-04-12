@@ -304,6 +304,12 @@ public class GreetingService {
 
 ```
 
+### @Required
++ 반드시 의존성이 주입되어야 함을 강제하는 Annotation
++ spinrg framework 5 부터는 deplicated 되었지만 Legacy 어플리케이션에서는 사용할수 있음
+
+### @Autowired
+
 ## Java Configuration
 - xml로 설정을 대체하여 java 클래스를 이용해 설정
 
