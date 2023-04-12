@@ -309,6 +309,39 @@ public class GreetingService {
 + spinrg framework 5 부터는 deplicated 되었지만 Legacy 어플리케이션에서는 사용할수 있음
 
 ### @Autowired
++ @Target에 정의된 위치에 @Autowired Annotation을 사용할 수 있음
+
+### @Qualifier
++ @Qualifier를 지정하여 Bean의 이름을 의존성을 주입 할수 있음
+
+```java
+public class GreetingService {
+
+    private final Greeter greeter;
+
+    @Autowired
+    public GreetingService(@Qualifier("englishGreeter") Greeter greeter) {
+        this.greeter = greeter;
+    }
+
+    public boolean greet() {
+        // 인터페이스의 메소드를 호출하지만 실제 구현 객체의 메소드가 실행됩니다.
+        return greeter.sayHello();
+    }
+}
+
+```
+
+### @Value
++ 외부 속성을 주입하기 위해 사용
++ ex) greeter.properties에 from=Manty 라는 값이 있으면 
+ Annotation을 이용해 value 값을 가져올수 있음
+
+```java
+@Value("${from}")
+private String from;
+
+```
 
 ## Java Configuration
 - xml로 설정을 대체하여 java 클래스를 이용해 설정
