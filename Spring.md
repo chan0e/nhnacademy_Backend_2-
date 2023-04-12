@@ -286,3 +286,21 @@ public class GreetingService {
 ```
 
 
+## Java Configuration
+- xml로 설정을 대체하여 java 클래스를 이용해 설정
+
+### Bean 생성
+``` java
+@Configuration
+public class JavaConfig {
+    @Bean/*(name = "dbms")*/
+    public String dbms() {
+        return new String("MYSQL");
+    }
+}
+```
+
++ 
+
+
+### Bean 가져오기
