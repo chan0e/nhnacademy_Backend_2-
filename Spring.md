@@ -253,7 +253,7 @@ public class A {
 
 #### byName
 
-```java
+```xml
    <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter" scope="singleton">
     </bean>
 
@@ -285,6 +285,24 @@ public class GreetingService {
 }
 ```
 
+## Dependency Injection (Annotation)
+- XML 방식으로 Bean 의존성 주입을 Annotation으로 구현
+
+### Annotation 기반 설정
++ Annotation을 사용하려면 xml에 설정을 해줘야함
+
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- annotation설정을 위해 추가-->
+    <context:annotation-config/>
+
+```
 
 ## Java Configuration
 - xml로 설정을 대체하여 java 클래스를 이용해 설정
@@ -300,7 +318,40 @@ public class JavaConfig {
 }
 ```
 
-+ 
++ 위의 설정은 다음의 XML 설정과 동일
+
+``` xml
+<bean id="dbms" class="java.lang.String">
+        <constructor-arg type="java.lang.String" value="MYSQL" />
+  </bean>
+
+```
+
++ 또다른 방법
+``` java
+public interface BaseJavaConfig {
+    @Bean
+    default String dbms() {
+        return new String("MYSQL");
+    }
+}
+
+@Configuration
+public class JavaConfig implements BaseJavaConfig{
+}
+```
 
 
 ### Bean 가져오기
+#### AnnotationConfigApplicationContex
++ 생성자 파라미터로 받을수 있는 클래스
+	- @Configuration 설정한 클래스
+	- @Component 설정한 클래스
+
+```java
+ AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext("com.nhnent.edu.spring.greeting");
+```
+
+
+
