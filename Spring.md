@@ -362,4 +362,96 @@ public class JavaConfig implements BaseJavaConfig{
 
 ## AOP(Aspect Oriented Programming)
  - 관점 지향은 어떤 로직을 기준으로 핵심적인 관점, 부가적인 관점으로 나누어서 보고 그 관점을 기준으로 모듈화
- - crosscutting concerns: 
+	 - crosscutting concerns: 횡단 관심사
+	 - core concerns : 주요관심사
+
+
+
+<img width="791" alt="image" src="https://user-images.githubusercontent.com/94053008/231341547-0f757143-c7cb-41ca-b291-edb0b1263bc9.png">
+
+### AOP 주요 용어
+
+#### Aspect
++ 하나 이상의 Pointcut과 Advice의 조합으로 만들어지는 AOP의 기본 모듈
++ Spring Framework 에서는 @Aspect를 사용하거나 XML에서 설정할 수 있음
+
+#### Join point
++ 프로그램 실행 중의 어떤 포인트를 의미(method 실행, Exception 처리)
++ Pointcut의 후보라고 생각
++ Spring AOP 에서는 method 실행만 대상
+
+#### Advice
++ Target에 제공할 부가기능을 담은 모듈
++ 특정 Join Point 에서 Aspect가 취하는 행동
+	- ex) around, before, after
+
+#### Pointcut
++ Advice를 적용할 Join Point를 선별하는 작업 또는 그 기능을 적용한 모듈
++ Advice는 Pointcut 표현식과 연결되고 Pointcut이 매치한 Join Point에서 실행
+
+#### Target Object
++ 부가기능을 부여할 대상
++ 하나 이상의 Aspect로 advised 객체
++ advised object라고 부르기도함
+
+#### Weaving
++ 다른 어플리케이션 타입이나 어드바이즈된 객체를 생성하는 객체와 관점을 연결하는 행위
+
+![image](https://user-images.githubusercontent.com/94053008/231343736-908650b6-e048-4adc-81f7-19e52c9d5b9a.jpeg)
+
+
+## Spring AOP vs @AspectJ
++ Spring Top
+	- AOP 개념을 스프링 빈에 적용하기 위한것
+	- Spring Bean 대상이므로 ApllicationContext가 처리
+	- RunTime-Weaving
++ AspectJ
+	- AOP개념을 모든 객체에 적용하기 위한것
+	- 컴파일 시점, 로드시점 Weaving
+
+### Spring AOP 설치
+
+``` xml
+
+<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+        <version>5.3.15</version>
+    </dependency>
+```
+
+
+### @AspectJ (Annotation) 지원
++ 일반 java에 Annotation으로 설정하는 방식
+
+```java
+
+@Configuration
+@EnableAspectJAutoProxy
+public class AppConfig {
+
+}
+```
+
++ xml 설정에서 @AspectJ 지원을 활성화 하기위한 설정
+
+```xml
+<aop:aspectj-autoproxy/>
+```
+
+### Aspect 선언
++ AspectJ 지원이 활성화 된 상태에서 Bean으로 선언하고 @Aspect 로 설정하면
+해당 spring-bean은 aspect가 된다.
+
+```java
+
+ @Aspect
+@Component
+public class LoggingAspect {
+...
+}
+```
+
+### 사용 요약
+
+![image](https://user-images.githubusercontent.com/94053008/231343812-f1a33397-4271-4ff6-8904-8866b1ca75df.png)
