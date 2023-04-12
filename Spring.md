@@ -310,6 +310,10 @@ public class GreetingService {
 
 ### @Autowired
 + @Target에 정의된 위치에 @Autowired Annotation을 사용할 수 있음
++ 필요한 의존 객체의 “타입"에 해당하는 빈을 찾아 주입함
+	- 생성자, setter, 필드
+
+
 
 ### @Qualifier
 + @Qualifier를 지정하여 Bean의 이름을 의존성을 주입 할수 있음
@@ -381,6 +385,7 @@ public class JavaConfig implements BaseJavaConfig{
 ```
 
 
+
 ### Bean 가져오기
 #### AnnotationConfigApplicationContex
 + 생성자 파라미터로 받을수 있는 클래스
@@ -392,6 +397,19 @@ public class JavaConfig implements BaseJavaConfig{
                 new AnnotationConfigApplicationContext("com.nhnent.edu.spring.greeting");
 ```
 
+
+
+### Copponent Scan
++ @Configuration을 지정한 클래스에 @ComponentScan을 설정항 스캐닝을 활성화 할 수 있음
+
+```java
+@Configuration
+@ComponentScan(basePackages = "com.nhnacademy.edu.springframework.greeting")
+public class BeanConfig {
+  // .. 생략 ..
+}
+
+``
 
 ## AOP(Aspect Oriented Programming)
  - 관점 지향은 어떤 로직을 기준으로 핵심적인 관점, 부가적인 관점으로 나누어서 보고 그 관점을 기준으로 모듈화
@@ -488,3 +506,125 @@ public class LoggingAspect {
 ### 사용 요약
 
 ![image](https://user-images.githubusercontent.com/94053008/231343812-f1a33397-4271-4ff6-8904-8866b1ca75df.png)
+
+### Point Cut
++ Target의 여러 Joinpoint 중에 advise를 적용할 대상을 지정하는 keyword
++ Spring AOP는 Spring-Bean의 method 실행 joinPoint만 지원
+
+```java
+@Pointcut("execution(* transfer(..))") // the pointcut expression
+private void anyOldTransfer() {} // the pointcut signature
+```
+
+### Pointcut 지정자
+
+#### execution
++ 메소드 실행 조인포인트와 매칭
++ 스프링 AOP의 주요 포인트컷 지정자
+
+#### within
++ 주어진 타입(클래스)으로 조인 포인트 범위를 제한
+
+#### this
++ 주어진 타입을 구현한 스프링 AOP Proxy 객체에 매칭
++ 보통 Proxy 객체를 Advice 파라미터에 바인딩하는 용도로 쓰임
+
+#### target
++ 주어진 타입을 구현한 타겟 객체에 매칭
++ 보통 타겟 객체를 Advice 파라미터에 바인딩하는 용도로 쓰임
+
+#### args
++ 주어진 타입의 인수들을 이용해 매칭
++ 보통 메소드 인자를 Advice 파라미터에 바인딩하는 용도로 쓰임
+
+#### 위의 용어들에 @를 붙이면 각 뜻에 맞게 매칭 시킴
+
+### 포인트 컷 - 조합
++ 포인트컷 표현식은 &&, ||, ! 으로 조합 가능
+
+
+```java
+// anyPublicOperation 포인트컷은 모든 public 메소드 실행에 매칭 됩니다.
+@Pointcut("execution(public * *(..))")
+private void anyPublicOperation() {} 
+
+// inTrading 포인트컷은 com.xyz.myapp.trading 패키지 내의 메소드 실행에 매칭
+@Pointcut("within(com.xyz.myapp.trading..*)")
+private void inTrading() {} 
+
+// tradingOperation 포인트컷은 com.xyz.myapp.trading 패키지 내의 퍼블릭 메소드 실행에 매칭
+@Pointcut("anyPublicOperation() && inTrading()")
+private void tradingOperation() {} 
+```
+
+### 포인트컷 - 표현식 예제
++ Spring AOP는 주로 execution 포인트컷 지정자를 사용
+```
+execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern) throws-pattern?)
+
+```
+
++ 모든 public 메소드
+```
+execution(public * *(..))
+```
++ get~ 으로 시작하는 모든 메소드
+```
+execution(* get*(..))
+```
++ com.nhnent.edu.spring_core 패키지에 있는 모든 메소드
+```
+execution(* com.nhnent.edu.spring_core.*.*(..))
+```
++com.nhnent.edu.spring_core.service.MemberService 인터페이스에 정의된 모든 메소드
+```
+execution(* com.nhnent.edu.spring_core.service.MemberService.*(..))
+```
++ com.nhnent.edu.spring_core.service 패키지의 모든 메소드실행
+```
+within(com.nhnent.edu.spring_core.service.*)
+```
++ TestService 프록시 구현체의 메소드 실행
+```
+this(com.nhnent.edu.spring_core.service.TestService)
+```
++ TestService 인터페이스의 구현 객체의 메소드 실행
+```
+target(com.nhnent.edu.spring_core.service.TestService)
+```
++ 런타임에 Serializable 타입의 단일 파라미터가 전달되는 메소드 실행 (인자값 검사 기능에 많이 사용됩니다.)
+```
+args(java.io.Serializable)
+```
++ @Transactional 어노테이션을 가진 모든 타겟 객체의 메소드 실행
+```
+@target(org.springframework.transaction.annotation.Transactional)
+```
+
+## Advice
+
++ advice는 포인트컷과 관련하여 메소드 실행 전, 후, 전/후를 결정하기위해 사용
+
+![image](https://user-images.githubusercontent.com/94053008/231468353-f076340b-2544-4174-a100-67ed67b9e168.png)
+
+
+### @Around advice
++ Object를 반환해야 하고 첫번째 인자는 ProceedingJoinPoint 여야 함
++ pjp의 proceed를 호출하면 타겟메소드가 실행됨
+
+``` java
+@Aspect
+public class AroundExample {
+
+    @Around("com.xyz.myapp.CommonPointcuts.businessService()")
+    public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
+        // start stopwatch
+        Object retVal = pjp.proceed();
+        // stop stopwatch
+        return retVal;
+    }
+}
+```
+
+
+![image](https://user-images.githubusercontent.com/94053008/231468110-82e1b35c-c023-4170-8d14-b92a6da19fc3.png)
