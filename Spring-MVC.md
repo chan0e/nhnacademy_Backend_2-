@@ -76,3 +76,8 @@
     }
 
 ```
+
+@Controller
+@GetMapping
+@PostMapping
+@RestController
