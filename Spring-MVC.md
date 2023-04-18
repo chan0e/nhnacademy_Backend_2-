@@ -77,10 +77,6 @@
 
 ```
 
-@Controller
-@GetMapping
-@PostMapping
-@RestController
 
 
 ## 예외처리
@@ -88,3 +84,8 @@
 ## Validation
 
 ## Spring's Validator
+
+## Spring MVC Components
+![image](https://user-images.githubusercontent.com/94053008/232671385-956b2056-5768-44db-bc72-da9da5ace6be.png)
+
+
