@@ -79,7 +79,7 @@ public User getUserById(@PathVariable Long id) {
 + 컨트롤러 내에서 예외가 발생했을 때 처리할 메서드를 정의할 때 사용함
 + 예외 클래스를 지정하고, 해당 예외가 발생했을 때 실행될 메서드를 작성함
 
-### InitBinder
+### @InitBinder
 + 요청 파라미터를 바인딩하기 전에 수행할 작업을 지정하는 Annotation
 + 주로 Validaotr를 등록하는 용도로 사용
 
