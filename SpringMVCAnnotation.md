@@ -66,18 +66,65 @@ public User getUserById(@PathVariable Long id) {
 ### @ModelAttribute
 + HTTP 요청 파라미터를 객체로 변환할때 사용
 + 파라미터 이름과 객체 필드 이름이 일치하면 자동으로 매핑되며, 별도로 설정할 수 도 있음
+```java
+@PostMapping("/purchase")
+    public String purchaseSubmit(@ModelAttribute("product") Product product, 
+                                 @RequestParam("paymentOption") String paymentOption) {
+        // 구매 처리 로직
+        return "purchase-result";
+    }
+
+```
++ 코드는 Product 객체를 생성하고 해당 객체에 HTTP 요청으로부터 전달받은 파라미터를 매핑한 후, product이라는 이름으로 컨트롤러 메서드의 파라미터로 전달해주는 역할
+
 
 ### @RequestBody
 + HTTP 요청 본문을 메서드의 파라미터로 전달할 때 사용
 + 요청 본문의 데이터를 객체로 변환하여 사용할 수 있으며, 설정에 따라 다른 변환기를 사용할 수 있음
 
+```java
+@PostMapping("/members")
+public void createMember(@RequestBody Member member) {
+    // Member 객체에 대한 처리 로직
+    // ...
+}
+```
+
+
 ### @Valid
 + 객체의 유효성 검사를 수행할 때 사용함
 + 메서드의 파라미터 앞에 붙이고, 검증 오류가 발생하면 BindingResult 객체에 저장됨
 
+```java
+@PostMapping("/login")
+public String login(@Valid LoginForm loginForm, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+        return "login";
+    }
+    // 로그인 로직 처리
+    return "home";
+}
+
+```
+
 ### @ExceptionHandler
 + 컨트롤러 내에서 예외가 발생했을 때 처리할 메서드를 정의할 때 사용함
 + 예외 클래스를 지정하고, 해당 예외가 발생했을 때 실행될 메서드를 작성함
+
+```java 
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllExceptions(Exception ex) {
+        ModelAndView model = new ModelAndView("error");
+        model.addObject("errMsg", "An error occurred: " + ex.getMessage());
+        return model;
+    }
+}
+
+```
 
 ### @InitBinder
 + 요청 파라미터를 바인딩하기 전에 수행할 작업을 지정하는 Annotation
