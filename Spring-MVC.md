@@ -88,4 +88,9 @@
 ## Spring MVC Components
 ![image](https://user-images.githubusercontent.com/94053008/232671385-956b2056-5768-44db-bc72-da9da5ace6be.png)
 
+## @Value
++ org.springframework.beans.factory.annotation.Value
++ lombok에 있는 Value랑 다른거임
+
+
 
