@@ -343,3 +343,102 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 ### @ResponseBody
 + java객체를 http 응답의 Body로 변환하는데 사용
+
+## RedirectAttribute 와 FlashMapManager
++ Spring에서 사용되는 redirection 기능을 제공하는 클래스
+
+1. RedirectAttribute
++ redirect시 데이터를 전달하기 위한 인터페이스로 redirect 시 보내고자하는 데이터를 속성형태로 저장
++ 이를 통해 리다이렉트 이후에도 데이터를 유지하고 활용할수 있음
+
+2. FlashMapManager
++ RedirectAttribute와 유사한 기능을 제공하지만 보다 일시적인 데이터 전달에 적합
++ 일시적인 데이터란, 리다이렉트 이후 바로 사용되고 그 이후에는 필요하지 않은 데이터를 말함
+
+> 예제 코드
+
+```java
+@Controller
+public class MyController {
+ 
+    @PostMapping("/data")
+    public String handleData(
+        @RequestParam("data") String data,
+        RedirectAttributes redirectAttributes) {
+ 
+        // 데이터 검증 및 처리 로직 수행
+ 
+        redirectAttributes.addFlashAttribute("message", "Data processed successfully.");
+        return "redirect:/result";
+    }
+ 
+    @GetMapping("/result")
+    public String showResult
+
+```
+
++ 이렇게 일시적으로 보내진 데이터는 폼에서 보여줄수 있음
+> 에제 코드
+```java
+<div th:if="${message}" style="color: red;">
+        <p>${message}</p>
+</div>
+```
+
+## Thymeleaf
+
++ 의존 라이브러리
+```xml
+<dependency>
+    <groupId>org.thymeleaf</groupId>
+    <artifactId>thymeleaf-spring5</artifactId>
+    <version>3.0.11.RELEASE</version>
+</dependency>
+```
+
++ HTML, XML, javascript, Css 등의 마크업 언어와 통합하여 서버 사이드에서 웹 애플리케이션을 개발할 수 있도록 해주는 자바 템플릿 엔진
++ 장점
+	- 자바 객체를 HTML 파일에 직접 바인딩할 수 있어서 개발 생산성이 높아짐
+	- 문법이 간단하고 직관적이여서 학습 곡선이 낮음
+	- 다국어 지원이 내장
+
+> 몇가지 문법들
+
+1. 변수표현식
++ ${..} 로 표현되며 변수값을 출력하는데 사용됨
+
+```html
+<p th:text="${username}">default username</p>
+```
+
+2. 리터럴. 텍스트
++ 텍스트를 삽입하는데 사용되며 표현식 내부에서 사용
+```html
+<p>안녕하세요! <span th:text="${username}">default username</span>님!</p>
+```
+
+3. 반복문
+```html
+<table>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}">1</td>
+    <td th:text="${user.name}">User1</td>
+    <td th:text="${user.email}">user1@example.com</td>
+  </tr>
+</table>
+```
+
+4. 조건문
+```html
+<p th:if="${isAdmin}">관리자입니다.</p>
+<p th:unless="${isAdmin}">관리자가 아닙니다.</p>
+```
+
+5. 메세지 처리
++ #{..}을 사용하여 다국어 메시지를 처리할 수 있음
+
+```html
+<p th:text="#{greeting.message}">Hello, World!</p>
+``
+
+
