@@ -194,4 +194,115 @@ public interface Validator {
 + lombok에 있는 Value랑 다른거임
 
 
+## HttpMessageConverter
++ http 요청과 응답의 본문(body)에 있는 데이터를 자바 객체로 변환하거나, 자바 객체를 http 요청 또는 응답의 본문에 있는 데이터로 변환 역할을 해주는 인터페이스
++ 자바 객체를 http 요청 또는 응답의 본문에 있는 데이터로 변환하여 원격 서버와 통신할 때 사용됨
++ 예를 들어, 클라이언트에서 JSON 형식으로 데이터를 HTTP 요청의 본문에 담아 서버로 전송하고, 서버는 이를 받아서 자바 객체로 변환하여 처리할 때, HttpMessageConverter가 JSON 데이터를 자바 객체로 변환해주는 역할을 수행. 마찬가지로 서버에서 클라이언트로 응답할때도 가능
+
+
+![image](https://user-images.githubusercontent.com/94053008/233266017-b363fc77-2f16-4bd4-a31c-5f05e4b74534.png)
+
+
+### @EnableWebMvc
++ Spring MVC 구성요소를 활성화하는데 사용
++ WebMvcConfigurer interface를 implements해서 Spring MVC 구성을 추가로 설정할수 있음
+
+> WebMvcConfigurer method 재정의 예제
+```java
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.example.controller")
+public class AppConfig implements WebMvcConfigurer {
+    
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/WEB-INF/views/", ".jsp");
+    }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+}
+```
+
+1. configureViewResolvers method
+
+```java
+ @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+	registry.jsp("/WEB-INF/views/", ".jsp");
+    }
+
+```
++ JSP View Resolvers를 등록하는 메소드
++ 첫번째 인자로 JSP 파일이 위치하는 경로를, 두번째 인자로 JSP 파일 확장자를 받음
+
+
+2. addResourceHandlers method
+
+```java
+@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+}
+
+```
++ 정적 자원 처리를 위한 핸들러를 등록하는 메소드
++ 첫 번째 인자로 요청 url패턴을, 두 번째 인자로 정적 자원이 위치하는 경로를 전달받아 등록
++ 즉,/resources/** 패턴으로 요청이 오면, /resources/ 경로에 위치한 정적 자원을 찾아서 응답으로 전송
++ 예를 들어, /resources/css/style.css URL로 요청이 오면, /resources/css/style.css 파일을 찾아서 응답으로 전송
+
+
+### ObjectMapper
++ 이를 사용하기 위해선 Jackson 라이브러리가 프로젝트에 추가되어 있어야 함
+```java
+<!-- Maven을 사용하는 경우 -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.12.4</version>
+</dependency>
+
+```
+
++ Java 객체를 JSON 데이터로 변환
+	> 예제 코드
+	
+	```java
+	 ObjectMapper objectMapper = new ObjectMapper();
+	 
+	 // Java 객체를 JSON 문자열로 변환
+	 User user = new User("John", 30);
+	 String jsonString = objectMapper.writeValueAsString(user);
+	 System.out.println(jsonString); // {"name":"John","age":30}
+	 
+	 // Java 객체를 출력 스트림으로 직접 출력
+	OutputStream outputStream = new FileOutputStream("user.json");
+	objectMapper.writeValue(outputStream, user);
+	 ```
+	
++ JSON 데이터를 Java 객체로 변환
+	> 예제 코드
+
+	```java
+	ObjectMapper objectMapper = new ObjectMapper();
+
+	// JSON 문자열을 Java 객체로 변환
+	String jsonString = "{\"name\":\"John\",\"age\":30}";
+	User user = objectMapper.readValue(jsonString, User.class);
+	System.out.println(user.getName()); // John
+	System.out.println(user.getAge()); // 30
+
+	// 입력 스트림으로부터 JSON 데이터를 읽어서 Java 객체로 변환
+	InputStream inputStream = new FileInputStream("user.json");
+	User user2 = objectMapper.readValue(inputStream, User.class);
+	
+	
+	
+	
++ 설정 변경
+	- JSON 데이터의 직렬화/역질렬화 과정에서 사용되는 설정을 변경할 수 있음
+	
+
 
