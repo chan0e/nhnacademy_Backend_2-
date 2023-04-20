@@ -128,6 +128,15 @@ public class GlobalExceptionHandler {
 
 ### @InitBinder
 + 요청 파라미터를 바인딩하기 전에 수행할 작업을 지정하는 Annotation
++ 컨트롤러에서 사용되는 폼 데이터 바인딩을 초기화 할수 있음
 + 주로 Validaotr를 등록하는 용도로 사용
++ setter 메서드 대신 필드에 직접 값을 주입할 수있음 
+
+```java
+@InitBinder
+    void initBinder(WebDataBinder binder){
+        binder.initDirectFieldAccess();
+    }
+```
 
 
