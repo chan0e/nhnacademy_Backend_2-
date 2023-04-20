@@ -79,7 +79,31 @@
 
 
 
-## 예외처리
+## 예외처리 (@ExceptionHandler)
++ Spring MVC에서 예외처리를 담당하는 Annotation 중 하나
++ Annotation을 이용해서 컨트롤러 내에서 발생한 예외를 캐치하고, 예외 발생 시 실행될 코드를 지정 할수 있음
++ method level에서 선언되며 예외처리를 담당하는 method에서 사용
+
+> @ExceptionHandler(RuntimeExcpetion.class) 예제
+
+```java
+
+@ControllerAdvice
+public class ExceptionHandlerController {
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+}
+
+```
+
+### @ControllerAdive
++ 전역적으로 적용할 수 있는 컨트롤러를 정의할 때 사용
++ 예를 들어, 여러 컨트롤러에서 발생할 수 있는 예외를 하나의 클래스에서 처리하고자 할때 사용(공동 error 처리가능)
++ 하나의 클래스에서 처리함으로 중복된 코드를 줄이고, 코드 유지보수성을 향상시킴
 
 ## Validation
 
