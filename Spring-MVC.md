@@ -189,10 +189,6 @@ public interface Validator {
 ## Spring MVC Components
 ![image](https://user-images.githubusercontent.com/94053008/232671385-956b2056-5768-44db-bc72-da9da5ace6be.png)
 
-## @Value
-+ org.springframework.beans.factory.annotation.Value
-+ lombok에 있는 Value랑 다른거임
-
 
 ## HttpMessageConverter
 + http 요청과 응답의 본문(body)에 있는 데이터를 자바 객체로 변환하거나, 자바 객체를 http 요청 또는 응답의 본문에 있는 데이터로 변환 역할을 해주는 인터페이스
@@ -439,6 +435,39 @@ public class MyController {
 
 ```html
 <p th:text="#{greeting.message}">Hello, World!</p>
-``
+```
+
+
+## @Value
++ org.springframework.beans.factory.annotation.Value
++ lombok에 있는 @Value랑 다른거임
+	- cf) lombok.@value를 사용하면 클래스 내의 모든 필드에 대한 생성자와 Getter 메소드가 자동으로 생성
+	- Setter 메소드는 생성되지 않음
+	- equals.hashCode 메소드도 자동으로 생성
+	- 불변 객체를 쉽게 생성
++ 스프링 빈의 필드나 생성자 파라미터에 값을 주입할때 사용
++ properties 파일 등의 외부 설정 정보를 읽어와서 해당 필드나 생성자 파라미터에 값을 주입할수 있음
+> 예제 코드
+
+```java
+@Configuration
+@PropertySource("classpath:some.properties")
+public class PropertiesConfig {
+    @Value("${key1}")
+    private String key1;
+
+    @Bean
+    public List<String> keys(@Value("${key2}") String key2) {
+        List<String> list = new ArrayList<>();
+        list.add(key1);
+        list.add(key2);
+
+        return list;
+    }
+
+}
+
+```
+
 
 
