@@ -139,4 +139,30 @@ public class GlobalExceptionHandler {
     }
 ```
 
+### @EnableWebMvc
++ Spring MVC 구성요소를 활성화하는데 사용
++ WebMvcConfigurer interface를 implements해서 Spring MVC 구성을 추가로 설정할수 있음
+
+> WebMvcConfigurer method 재정의 예제
+```java
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.example.controller")
+public class AppConfig implements WebMvcConfigurer {
+    
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/WEB-INF/views/", ".jsp");
+    }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+}
+```
+
+
+
+
 
