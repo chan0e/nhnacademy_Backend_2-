@@ -77,18 +77,56 @@ public User getUserById(@PathVariable Long id) {
 ```
 + 코드는 Product 객체를 생성하고 해당 객체에 HTTP 요청으로부터 전달받은 파라미터를 매핑한 후, product이라는 이름으로 컨트롤러 메서드의 파라미터로 전달해주는 역할
 
+### @ResponseEntity
++ Spring Framework에서 http response을 감싸는 역할을 함(직접 http 응답을 구성할 수 있음)
++ 생성자를 이용해 응답 본문, HTTP 상태 코드, 응답헤더 등을 설정할 수 있음
+
+
 
 ### @RequestBody
 + HTTP 요청 본문을 메서드의 파라미터로 전달할 때 사용
 + 요청 본문의 데이터를 객체로 변환하여 사용할 수 있으며, 설정에 따라 다른 변환기를 사용할 수 있음
 
+### @ResponseBody
++ java객체를 http 응답의 Body로 변환하는데 사용
+
+> @ResponseEntity,@RequestBody,@ResponseBody를 사용한 예제 코드
+
 ```java
-@PostMapping("/members")
-public void createMember(@RequestBody Member member) {
-    // Member 객체에 대한 처리 로직
-    // ...
+@RestController
+@RequestMapping("/api")
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        userService.addUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+    
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable("userId") int userId) {
+        User user = userService.getUserById(userId);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(user);
+    }
+    
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        if (users.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(users);
+    }
 }
+
 ```
+
 
 
 ### @Valid
