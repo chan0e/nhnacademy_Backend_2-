@@ -99,13 +99,57 @@ public class ExceptionHandlerController {
 }
 
 ```
++ ExceptionHandler에서 사용가능한 method argument
+    - HttpServletRequest, HttpServletResponse, HttpSession, WebRequest
+    - Locale
+    - InputStream, OutputStream, Reader, Writer
+    - Map, Model, ModelMap
+
++ ExceptionHandler에서 사용가능한 return type
+    - ModelAndView, View
+    - Map, Model, ModelMap
+    - String
+    - Void
+    - @ResponseBody
+    - POJO
 
 ### @ControllerAdive
 + 전역적으로 적용할 수 있는 컨트롤러를 정의할 때 사용
 + 예를 들어, 여러 컨트롤러에서 발생할 수 있는 예외를 하나의 클래스에서 처리하고자 할때 사용(공동 error 처리가능)
 + 하나의 클래스에서 처리함으로 중복된 코드를 줄이고, 코드 유지보수성을 향상시킴
 
+
 ## Validation
++ 입력값이 어떤 조건을 만족하는지 검증하는 작업을 의미
++ @Valid Annotation을 이용하여 Bean Validation 기능을 수행
+
+![image](https://user-images.githubusercontent.com/94053008/233260234-19a50c85-4f37-4b18-91bc-2d45362b54a7.png)
+
+
+
+
+> 회원가입시 입력되는 정보중 이메일 주소가 입력될때 해당메일이 유효한것인지 검증하는 예제
+```java
+
+public class SignupForm {
+    @NotEmpty
+    @Email
+    private String email;
+    ...
+}
+
+@Controller
+public class SignupController {
+    @PostMapping("/signup")
+    public String signup(@Valid SignupForm signupForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "signup";
+        }
+        ...
+    }
+}
+
+```
 
 ## Spring's Validator
 
