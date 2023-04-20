@@ -469,5 +469,32 @@ public class PropertiesConfig {
 
 ```
 
++ some.properties
+```properties
+key1=value1
+key2=value2
+key3=value3
+```
+
+
+## Content Negotiation
++ 클라이언트와 서버 사이의 커뮤니케이션에서 요청과 응답을 전달할 때, 데이터 표현 방식(미디어 타입)에 대해 협상하는 프로세스
++ 예를들어 클라이언트가 xml로 요청을 보낸 경우, 서버는 xml로 응답을 보내야함
+
+```java
+  public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.favorParameter(true)
+                  .parameterName("format")
+                  .ignoreAcceptHeader(true)
+                  .defaultContentType(MediaType.APPLICATION_JSON)
+                  .mediaType("json", MediaType.APPLICATION_JSON)
+                  .mediaType("xml", MediaType.APPLICATION_XML);
+    }
+```
++ parameterName() : Accept 헤더 무시 -> 클라이언트가 Accept 헤더를 지정하지 않아도 요청 파라미터에 따라 적절한 응답 형식을 반환
++ defaultContentType() : 클라이언트가 지정한 응답 형식이 없을경우 기본적으로 사용할 응답 형식을 설정
++ mediaType() : 클라이언트가 요청한 콘텐츠 유형에 따라 사용할 수 있는 응답 형식을 설정
++ 위의 코드를 토대로 데이터를 xml,json 형태로 받을수 있는데 자신이 지정한 url?format=json or url?format=xml로 하면 각 형식에 맞게 보여줌
+
 
 
