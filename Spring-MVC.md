@@ -123,6 +123,29 @@ public class ExceptionHandlerController {
 + 입력값이 어떤 조건을 만족하는지 검증하는 작업을 의미
 + @Valid Annotation을 이용하여 Bean Validation 기능을 수행
 
+### Bean Validation Library
+
+API
+```xml
+<dependency>
+    <groupId>jakarta.validation</groupId>
+    <artifactId>jakarta.validation-api</artifactId>
+    <version>2.0.2</version>
+</dependency>
+```
+
+Implementation
+
+
+```xml
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>6.2.3.Final</version>
+</dependency>
+```
+
+
 ![image](https://user-images.githubusercontent.com/94053008/233260234-19a50c85-4f37-4b18-91bc-2d45362b54a7.png)
 
 
@@ -151,7 +174,17 @@ public class SignupController {
 
 ```
 
+
+
 ## Spring's Validator
++ org.springframework.validation.Validator interface를 이용한 Validation 구현
+
+```java
+public interface Validator {
+	boolean supports(Class<?> clazz);
+	void validate(Object target, Errors errors);
+}
+```
 
 ## Spring MVC Components
 ![image](https://user-images.githubusercontent.com/94053008/232671385-956b2056-5768-44db-bc72-da9da5ace6be.png)
