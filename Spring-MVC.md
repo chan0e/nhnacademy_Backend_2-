@@ -285,6 +285,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 + JSON 데이터를 Java 객체로 변환
 	> 예제 코드
 
+
 	```java
 	ObjectMapper objectMapper = new ObjectMapper();
 
@@ -299,10 +300,46 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	User user2 = objectMapper.readValue(inputStream, User.class);
 	
 	
-	
-	
 + 설정 변경
 	- JSON 데이터의 직렬화/역질렬화 과정에서 사용되는 설정을 변경할 수 있음
+	> 예제 코드
+
+	```java
 	
+	ObjectMapper objectMapper = new ObjectMapper();
+
+	// 직렬화 시 빈 값이 포함되지 않도록 설정
+	objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+	// 날짜 데이터를 "yyyy-MM-dd" 형식으로 직렬화하도록 설정
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	objectMapper.setDateFormat(dateFormat);
+
+	// Java 객체를 JSON 문자열로 변환
+	User user = new User("John", 30);
+	String jsonString = objectMapper.writeValueAsString(user);
+	System.out.println(jsonString); // {"name":"John","age":30}
+
+	// JSON 문자열을 Java 객체로 변환
+	String jsonString2 = "{\"name\":\"John\",\"age\":null}";
+	User user2 = objectMapper.readValue(jsonString2, User.class);
+	System.out.println(user2.getName()); // John
+	System.out.println(user2.getAge()); // null
+	
+	
+	
+	
+## @ResponseBody, @RequestBody, @ResponseBody
+
+### @ResponseEntity
++ Spring Framework에서 http response을 감싸는 역할을 함(직접 http 응답을 구성할 수 있음)
++ 생성자를 이용해 응답 본문, HTTP 상태 코드, 응답헤더 등을 설정할 수 있음
 
 
+
+### @RequestBody
++ HTTP 요청 본문을 메서드의 파라미터로 전달할 때 사용
++ 요청 본문의 데이터를 객체로 변환하여 사용할 수 있으며, 설정에 따라 다른 변환기를 사용할 수 있음
+
+### @ResponseBody
++ java객체를 http 응답의 Body로 변환하는데 사용
