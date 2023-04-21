@@ -54,3 +54,5 @@
 ![image](https://user-images.githubusercontent.com/94053008/233543738-b7d52a00-7ba9-4df3-a851-49ceab3cdfbc.png)
 
 + 버그투성이...
++ 아직 테스트 코드를 작성안함..
+
