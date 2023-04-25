@@ -227,3 +227,5 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 + Attribute: 타원형으로 표현
 + Relationship: 엔티티간의 속성을 표시. 마름모로 표현
   
+  
+## 정규화(Denormalization)
