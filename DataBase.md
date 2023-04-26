@@ -253,10 +253,10 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 
 + 주문 상품이 column으로 중복되어 나타나고 있음 -> 1차 정규화
 
-+ 고객 정보 테이블
+#### 고객 정보 테이블
 <img width="667" alt="image" src="https://user-images.githubusercontent.com/94053008/234485929-d7bc4621-5fb4-4444-9936-0aeff99ff193.png">
 
-+ 주문 상품 정보 테이블
+#### 주문 상품 정보 테이블
 <img width="674" alt="image" src="https://user-images.githubusercontent.com/94053008/234486018-18ba2afc-d6e4-4824-a099-b33e4e5a8ad8.png">
 
 ### 2차 정규화
@@ -268,11 +268,11 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 <img width="673" alt="image" src="https://user-images.githubusercontent.com/94053008/234487311-4d5d14eb-bbdc-444a-8438-ef91850c0a5c.png">
 + 학번이 주요 속성, 나머지 세 가지 속성은 학번에 대해서 부분적으로 종속되어 있음
 
-+ 학생 정보테이블(학번,학과)
+#### 학생 정보테이블(학번,학과)
 <img width="676" alt="image" src="https://user-images.githubusercontent.com/94053008/234487666-f283601f-57a9-4ebc-ae28-c0fdbb6b675e.png">
 
 
-+ 성적 정보 테이블(학번,과목,성적)
+#### 성적 정보 테이블(학번,과목,성적)
 
 <img width="668" alt="image" src="https://user-images.githubusercontent.com/94053008/234487883-79c0ac35-8a39-432e-a5c2-b0aadbba5bf7.png">
 
@@ -280,24 +280,47 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 + 테이블에서 이행적 종속을 제거하는데 초점을 둔 정규화
 + 3차 정규화를 통해 테이블이 모든 행에 대해 키에 의존하지 않도록 만들어짐
 
-+ 상품 테이블 
+#### 상품 테이블 
+
 <img width="670" alt="image" src="https://user-images.githubusercontent.com/94053008/234492229-912f501a-2926-42c7-a6fb-592a2a87e656.png">
+
 + 2차 정규화까지 적용되어 있음
 + 모든 컬럼이 후보키에 포함되거나 후보키에 종속적인 컬럼으로만 구성되어 있음
 
 
-+ 상품 테이블
+#### 상품 테이블
+
 <img width="655" alt="image" src="https://user-images.githubusercontent.com/94053008/234492713-f8963a0b-4920-4d12-8751-eee1c3a898d1.png">
 
-+ 제조사 테이블
+#### 제조사 테이블
+
 <img width="664" alt="image" src="https://user-images.githubusercontent.com/94053008/234492767-c7051251-e802-4654-9990-7500f4a542e7.png">
 
 
-+ 제조국가 테이블
+#### 제조국가 테이블
 <img width="667" alt="image" src="https://user-images.githubusercontent.com/94053008/234492826-293c2bb4-9f71-4c96-97e4-c441bc3b702b.png">
 
 
-###
+### BNCF(Boyce-Codd Normal Form)
++ 모든 결정자는 후보키인 테이블 형태
++ 결정자가 후보키의 일부가 아닌경우 이를 분해하여 새로운 릴레이션을 생성해야 함
++ 모든 함수적 종속을 만족하면서 이상 현상을 제거
+
+#### 상품 테이블
+
+<img width="673" alt="image" src="https://user-images.githubusercontent.com/94053008/234494344-17510c0e-f10a-4357-b078-c2144202ee07.png">
+
++ 제조사 ID는 후보키이지만 상품명에 따라서도 가격이 결정될 수 있음
++ 상품명은 제조사 ID에 종속적이라는 문제점이 있어 이를 해결하기 위해 제조사 정보를 별도의 테이블로 분리
+
+#### 제조사 테이블
+
+
+<img width="668" alt="image" src="https://user-images.githubusercontent.com/94053008/234494815-c801566f-3372-437f-baec-408ef73b01b7.png">
+
+
+
+
 
 
 
