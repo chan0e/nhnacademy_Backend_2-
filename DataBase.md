@@ -266,6 +266,7 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 > 학생 성적 데이터
 
 <img width="673" alt="image" src="https://user-images.githubusercontent.com/94053008/234487311-4d5d14eb-bbdc-444a-8438-ef91850c0a5c.png">
+
 + 학번이 주요 속성, 나머지 세 가지 속성은 학번에 대해서 부분적으로 종속되어 있음
 
 #### 학생 정보테이블(학번,학과)
