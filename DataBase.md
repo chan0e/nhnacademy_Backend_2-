@@ -243,3 +243,21 @@ KEY는 데이터베이스에서 조건에 만족하는. 튜플을 찾거나 순�
 
   
 ## 정규화(Denormalization)
++ 데이터베이스 설계과정에서 중복을 최소화하고 데이터의 일관성과 무결성을 유지하기 위해 릴레이션을 분해하는 과정
++ DB의 성능과 유지보수를 향상시키는데 도움이 됨
+
+### 1차 정규화
++ 각 속성이 원자적(Atomic)
++ 즉, 하나의 속성은 더 이상 분해할 수 없는 단위여야 함
+<img width="669" alt="image" src="https://user-images.githubusercontent.com/94053008/234485723-699aa44d-8302-47ff-8788-ad1be4919707.png">
+
++ 주문 상품이 column으로 중복되어 나타나고 있음 -> 1차 정규화
+
++ 고객 정보 테이블
+<img width="667" alt="image" src="https://user-images.githubusercontent.com/94053008/234485929-d7bc4621-5fb4-4444-9936-0aeff99ff193.png">
+
++ 주문 상품 정보 테이블
+<img width="674" alt="image" src="https://user-images.githubusercontent.com/94053008/234486018-18ba2afc-d6e4-4824-a099-b33e4e5a8ad8.png">
+
+
+
