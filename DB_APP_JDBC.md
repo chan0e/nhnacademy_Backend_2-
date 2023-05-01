@@ -32,11 +32,26 @@
 
 ## JDBC 아키텍쳐
 + 2-Tier 아키텍쳐
+  - 클라이언트와 서버로 구분
+  - 클라이언트는 사용자 인터페이스와 비즈니스 로직을 담당하고, 서버는 데이터베이스를 담당
+  
 + 3-Tier 아키텍쳐
+  - 클라이언트, 애플리케이션서버, 데이터베이스 서버로 구분
+  - 애플리케이션 서버는 클라이언트와 데이터베이스 서버 사이에서 비즈니스 로직을 처리
 
 
 ## java.sql 패키지
 ![image](https://user-images.githubusercontent.com/94053008/235394665-4d79054f-ecaa-46f3-b9f6-5b9c18e714d7.png)
 
+
+## Tier Vs Layer
++ Tier
+  - 일반적으로 시스템을 물리적인 측면에서 구분하는 방법
+
++ Layer
+  - 소프트웨어 아키텍처에서 각 계층이 수행하는 작업에 따라 구분하는 방법(논리적인 방법)
+  - Presentation Layer, Business Layer, Data Access Layer와 같이 3개의 계층으로 구성
+  - Presentation Layer는 사용자와 상호작용하는 UI를 담당하며, Business Layer는 비즈니스 로직을 담당하고, Data Access Layer는 데이터베이스와 상호작용하는 코드를 담당
+  - 
 
 
