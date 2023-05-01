@@ -18,3 +18,25 @@
 | JDBC Driver Manager | Java 응용프로그램에서 사용하는 데이터베이스에 맞는 JDBC 드라이버 로드 |
 | JDBC API | Java 응용프로그램에서 데이터베이스에 연결하고 데이터를 제어할 수 있도록 하는 데이터베이스 연결 및 제어를 위한 인터페이스/클래스|
 | JDBC Driver| 데이터베이스 개발사에서 만든 데이터베이스 드라이버|
+
+## JDBC Driver Type
++ JDBC-ODBC Bridge Type
++ Native_API / Partly Java Type
++ Net-Protocol / All-Java Type
++ Native-Protocol / All-Java Type
+  - 가장 많이 사용되고 있는 형태
+  - 직접 DB와 통신, 순수 Java Driver라고 불림
+  - Native Library 및 미들웨어 서버가 필요하지 않음
+  - 가장 좋은 성능
+![image](https://user-images.githubusercontent.com/94053008/235394380-850fc28c-aa59-41eb-9015-1ac5f747d01f.png)
+
+## JDBC 아키텍쳐
++ 2-Tier 아키텍쳐
++ 3-Tier 아키텍쳐
+
+
+## java.sql 패키지
+![image](https://user-images.githubusercontent.com/94053008/235394665-4d79054f-ecaa-46f3-b9f6-5b9c18e714d7.png)
+
+
+
