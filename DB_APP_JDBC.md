@@ -52,6 +52,6 @@
   - 소프트웨어 아키텍처에서 각 계층이 수행하는 작업에 따라 구분하는 방법(논리적인 방법)
   - Presentation Layer, Business Layer, Data Access Layer와 같이 3개의 계층으로 구성
   - Presentation Layer는 사용자와 상호작용하는 UI를 담당하며, Business Layer는 비즈니스 로직을 담당하고, Data Access Layer는 데이터베이스와 상호작용하는 코드를 담당
-  - 
+ 
 
 
