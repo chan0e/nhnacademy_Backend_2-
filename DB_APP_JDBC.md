@@ -145,7 +145,7 @@ private static final String driverName = "com.mysql.cj.jdbc.Driver";
 + SQL Injection 공격 대체 방식의 차이
   - PreparedStatement는 쿼리문에 값이 들어가는 부분을 placeholder로 처리하기 때문에 공격에 이용되는것을 막음
   - 반면 Statement는 사용자 입력값이 쿼리문에 그대로 들어가기 때문에 sql 인젝션 공격에 노출될수 있음
-
+  
 
 
 
