@@ -10,8 +10,6 @@
 ![image](https://user-images.githubusercontent.com/94053008/235392787-790af12d-19ee-4a61-8304-5805c4e4372c.png)
 
 
-<!-- |구성요소|설명|역할| -->
-
 | 구성요소 | 설명 |
 | ---- | --- |
 | Java Application | Java 응용 프로그램, Java 웹 응용프로그램 서버|
@@ -30,6 +28,9 @@
   - 가장 좋은 성능
 ![image](https://user-images.githubusercontent.com/94053008/235394380-850fc28c-aa59-41eb-9015-1ac5f747d01f.png)
 
+
+
+
 ## JDBC 아키텍쳐
 + 2-Tier 아키텍쳐
   - 클라이언트와 서버로 구분
@@ -38,11 +39,6 @@
 + 3-Tier 아키텍쳐
   - 클라이언트, 애플리케이션서버, 데이터베이스 서버로 구분
   - 애플리케이션 서버는 클라이언트와 데이터베이스 서버 사이에서 비즈니스 로직을 처리
-
-
-## java.sql 패키지
-![image](https://user-images.githubusercontent.com/94053008/235394665-4d79054f-ecaa-46f3-b9f6-5b9c18e714d7.png)
-
 
 ## Tier Vs Layer
 + Tier
@@ -53,5 +49,71 @@
   - Presentation Layer, Business Layer, Data Access Layer와 같이 3개의 계층으로 구성
   - Presentation Layer는 사용자와 상호작용하는 UI를 담당하며, Business Layer는 비즈니스 로직을 담당하고, Data Access Layer는 데이터베이스와 상호작용하는 코드를 담당
  
+ 
+ ## java.sql 패키지
+![image](https://user-images.githubusercontent.com/94053008/235394665-4d79054f-ecaa-46f3-b9f6-5b9c18e714d7.png)
+
+## java.sql 객체 설명 및 사용 순서
+
++ DriverManager
+  - JDBC 드라이버 로딩, 연결 및 끊기 등의 작업을 처리하는 클래스
+ 
++ Connection
+   - 데이터베이스와 연결을 맺는 객체로, Statement와 PreparedStatement 객체를 생성하기위한 기반 객체
+
++ Statement
+  - SQL 쿼리문을 실행하고 반환하는 객체로 일반적인 쿼리 실행에 사용됨
+
++ PreparedStatement
+  - 미리 컴파일된 SQL 쿼리문을 실행하고 결과를 반환하는 객체
+  - 동적으로 쿼리를 생성할 필요가 없으므로 보안성과 성능이 뛰어남
+
++ ResultSet
+  - 쿼리 실행 결과를 담는 객체로 데이터를 반복해서 처리할 수 있음
+
+> 예제코드
+```java
+private static final String driverName = "com.mysql.cj.jdbc.Driver";
+    private static final String databaseURL = "jdbc:mysql://localhost/TEST";
+    private static final String userNmae = "admin";
+    private static final String userpwd = "1234";
+
+
+    Connection connection = null;
+    Statement statement = null;
+    ResultSet resultSet = null;
+
+    public void connect() {
+        try {
+            Class.forName(driverName);
+            connection = DriverManager.getConnection(databaseURL, userNmae, userpwd);
+            statement = connection.createStatement();
+            String sqlQuery = "select * from emp";
+
+            resultSet = statement.executeQuery(sqlQuery);
+
+            while (resultSet.next()) {
+                System.out.print(resultSet.getInt(1) + " ");
+                System.out.print(resultSet.getString(2) + " ");
+                System.out.print(resultSet.getString(3) + " ");
+             
+                System.out.println();
+
+            }
+            resultSet.close();
+            connection.close();
+            resultSet.close();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+```
+
+
+
+
+
 
 
