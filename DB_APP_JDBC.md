@@ -50,7 +50,7 @@
   - Presentation Layer는 사용자와 상호작용하는 UI를 담당하며, Business Layer는 비즈니스 로직을 담당하고, Data Access Layer는 데이터베이스와 상호작용하는 코드를 담당
  
  
- ## java.sql 패키지
+## java.sql 패키지
 ![image](https://user-images.githubusercontent.com/94053008/235394665-4d79054f-ecaa-46f3-b9f6-5b9c18e714d7.png)
 
 ## java.sql 객체 설명 및 사용 순서
@@ -110,6 +110,23 @@ private static final String driverName = "com.mysql.cj.jdbc.Driver";
         }
 
 ```
+
+### Statement와 PreparedStatement 차이점
++ 컴파일 방식의 차이
+  -  Statement는 매번 실행 시에 sql 쿼리문을 실행
+  -  PreparedStatements는 처음 실행 시에 sql 쿼리문을 컴파일한 이후에는 컴파일 없이 캐시에서 재사용함
+  -  따라서 PreparedStatement를 사용하면 실행 속도가 더 빠름
+
++ 코드 가독성의 차이
+  - PreparedStatement는 sql 쿼리문에 '?' 와 같은 placeholder를 사용하여 값을 나중에 채움
+  - 반면 Statement는 sql 쿼리문 안에 값을 포함하여 작성해야함
+  - 따라서, PreparedStatement를 사용하면 코드 가독성이 더 좋아짐
+
++ SQL Injection 공격 대체 방식의 차이
+  - PreparedStatement는 쿼리문에 값이 들어가는 부분을 placeholder로 처리하기 때문에 공격에 이용되는것을 막음
+  - 반면 Statement는 사용자 입력값이 쿼리문에 그대로 들어가기 때문에 sql 인젝션 공격에 노출될수 있음
+
+
 
 
 
