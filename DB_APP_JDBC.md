@@ -146,7 +146,15 @@ private static final String driverName = "com.mysql.cj.jdbc.Driver";
   - PreparedStatement는 쿼리문에 값이 들어가는 부분을 placeholder로 처리하기 때문에 공격에 이용되는것을 막음
   - 반면 Statement는 사용자 입력값이 쿼리문에 그대로 들어가기 때문에 sql 인젝션 공격에 노출될수 있음
   
-
+## CRUD 개요
++ Create, Read, Update, Delete
++ 대부분의 컴퓨터 소프트웨어가 가지는 기본적인 데이터 처리 기능
++ 유사 용어
+  - ABCD : Add, Browse, Change, Delete
+  - ACID : Add, Change, Inquire, Delete
+  - BREAD : Browse, Read, Edit, Add, Delete
+  - VADE(R) : View, Add, Delete, Edit(트랜잭션에서 Restore 추가)
+  - SIUD : Select, Insert, Update, Delete
 
 
 
