@@ -53,7 +53,7 @@
 ## java.sql 패키지
 ![image](https://user-images.githubusercontent.com/94053008/235394665-4d79054f-ecaa-46f3-b9f6-5b9c18e714d7.png)
 
-## java.sql 객체 설명 및 사용 순서
+## java.sql 객체 설명
 
 + DriverManager
   - JDBC 드라이버 로딩, 연결 및 끊기 등의 작업을 처리하는 클래스
@@ -68,8 +68,20 @@
   - 미리 컴파일된 SQL 쿼리문을 실행하고 결과를 반환하는 객체
   - 동적으로 쿼리를 생성할 필요가 없으므로 보안성과 성능이 뛰어남
 
++ CallableStatement
+  - 저장 프로시저를 호출하기 위해 사용
+  - IN, OUT, INOUT 파라미터를 
+
 + ResultSet
   - 쿼리 실행 결과를 담는 객체로 데이터를 반복해서 처리할 수 있음
+
+## 사용순서
+1. 드라이버를 로드
+2. Connection 객체를 통해 연결
+3. Statement/PreparedStatement/CallableStatement 객체를 통해 명령을 내림
+4. 명령 수행으로 반한되는 결과가 있으면 ResultSet객체로 반환받고 반환받은 결과를 이용함
+5. 객체들을 순서대로 close 해줌
+
 
 > 예제코드
 ```java
