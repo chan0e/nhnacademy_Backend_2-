@@ -60,13 +60,21 @@
  
 + Connection
    - 데이터베이스와 연결을 맺는 객체로, Statement와 PreparedStatement 객체를 생성하기위한 기반 객체
+      - createStatement() 메서드를 사용해 Statement 인터페이스를 구현하는 새로운 객체를 반환함
 
 + Statement
   - SQL 쿼리문을 실행하고 반환하는 객체로 일반적인 쿼리 실행에 사용됨
+      - executeQuery()
+          + select 쿼리 수행
+          + ResultSet 객체 반환
+      - executeUpdate()
+          + insert / update / delete 쿼리 수행
+          + 성공 여부나 영향 받은 투플의 수를 int 타입으로 반환
 
 + PreparedStatement
   - 미리 컴파일된 SQL 쿼리문을 실행하고 결과를 반환하는 객체
   - 동적으로 쿼리를 생성할 필요가 없으므로 보안성과 성능이 뛰어남
+    - setint(int parameterindex, int value), setString(...), setDate(...), setNull(...)....와 같은 값을 넣는 메소드 
 
 + CallableStatement
   - 저장 프로시저를 호출하기 위해 사용
