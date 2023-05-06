@@ -200,6 +200,18 @@ public class AppConfig implements WebMvcConfigurer {
 }
 ```
 
++ EnableWebMvc를 사용하기위해 spring-webmvc 모듈을 프로젝트에 의존성 설정을 해야함
+ - 주요기능
+   - 컨트롤러(Controller): 웹 애플리케이션의 비즈니스 로직을 처리하는 컨트롤러 클래스를 작성
+   - 요청 매핑(Request Mapping): URL 패턴과 컨트롤러 메서드를 매핑하여 요청을 처리
+   - 모델-뷰-컨트롤러 패턴: 애플리케이션의 로직을 모델(Model)과 뷰(View), 컨트롤러(Controller)로 분리하여 개발
+   - 뷰 리졸버(View Resolver): 컨트롤러에서 반환된 뷰 이름을 실제 뷰로 해석하여 렌더링
+   - 데이터 바인딩(Data Binding): 클라이언트의 요청 데이터를 자바 객체에 자동으로 매핑하는 기능을 제공
+   - 폼 처리(Form Handling): 폼 데이터의 검증과 바인딩을 처리하는 기능을 제공
+   - 인터셉터(Interceptor): 요청 처리 전후에 로직을 실행할 수 있는 인터셉터를 설정
+   - 예외 처리(Exception Handling): 예외 발생 시 처리할 수 있는 기능을 제공
+   -파일 업로드 및 다운로드: 파일 업로드와 다운로드를 처리할 수 있는 기능을 제공
+
 
 
   
