@@ -214,5 +214,10 @@ public class AppConfig implements WebMvcConfigurer {
 
 
 
+### @Service
++ 해당 클래스를 서비스 역할으 하는 컴포넌트로 지정하는 역할을 함
++ @ComponentScan으로 스캔대상을 설정해줄 필욕 없음
++ Spring이 자동으로 스프링컨테이너에 빈으로 등록하고 다른 컴포넌트에 주입항 사용할수 있음
+
   
 
