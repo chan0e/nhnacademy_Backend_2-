@@ -146,4 +146,27 @@ hibernate.format_sql=true
 ```
 
 
-## 
+## Entity Mapping
++ Entity 클래스에 DB 테이블과, 컬럼, 기본 키, 외래 키 등을 설정하는것
+
+### Annotations
++ @Entity : JPA가 관리할 객체임을 명시
++ @Table : 맵핑할 DB 테이블 명 지정
++ @Id : PK 맵핑
++ @Column : 필드와 컬럼 이름 맵핑(생략가능 -> 변수명과 DB 필드명이 같은경우에 해당)
++ @Temporal : 날짜 타입 맵핑
++ @Transient : 특정 필드를 컬럼에 맵핑하지 않을 경우에 지정
+   - cf.) java 8 date/time (LocalTime, LocalDate, ZonedDateTime) 타입은 @Temporal을 붙           이지 않음.
++ @GeneratedValue : 엔티티의 기본키 값을 자동으로 생성하기 위해 사용
+   - @GeneratedValue(strategy = GenerationType.IDENTITY) 
+      - 자동 증가기능을 사용하여 기본키 값을 생성함          
+   - @GeneratedValue(strategy = GenerationType.SEQUENCE)
+      - DB 시퀀스를 사용하여 기본키 값을 생성
+      - 이 전략은 시퀀스를 지원하는 DB에서만 사용할수있음
+   - @GeneratedValue(strategy = GenerationType.TABLE)
+      - 별도의 키 생성용 테이블을 사용하여 기본 키 값을 생성
+   - @GeneratedValue(strategy = GenerationType.AUTO)
+      - JPA 구현체가 가장 적합한 전략을 선택하여 기본 키 값을 생성
+
++ @IdClass : 복합 키를 구성하는 여러개의 필드를 별도의 식별자 클래스로 지정, @Id를 사용해 복합키 필드와 엔티티 클래스간의 매핑을 함
+
