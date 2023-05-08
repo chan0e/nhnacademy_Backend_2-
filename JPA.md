@@ -169,4 +169,42 @@ hibernate.format_sql=true
       - JPA 구현체가 가장 적합한 전략을 선택하여 기본 키 값을 생성
 
 + @IdClass : 복합 키를 구성하는 여러개의 필드를 별도의 식별자 클래스로 지정, @Id를 사용해 복합키 필드와 엔티티 클래스간의 매핑을 함
++ @EmbeddedId : Entitiy 클래스의 필드에 지정
++ @Embeddable : 복합 Key 식별자 클래스에 지정
 
+
+> Annotation 실습코드
+```java
+@NoArgsConstructor
+@Entity
+@Table(name = "OrderItems")
+@Getter
+@Setter
+public class OrderItem2 {
+
+    @EmbeddedId
+    private Pk pk;
+
+
+    @Embeddable
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @EqualsAndHashCode
+    public class Pk implements Serializable {
+        @Column(name = "order_id")
+        private Long orderId;
+
+        @Column(name = "line_number")
+        private Integer lineNumber;
+
+    }
+}
+```
+
++ 복합 Key class 제약조건
+   - 기본 키 클래스는 다른 클래스에서 접근할 수 있도록 public으로 선언되어야함
+   - 기본 키 클래스는 인자가 없는(public no-arg) 기본 생성자를 가져야 함. JPA에서 엔티티를 로드하고        생성할 때 이 생성자가 사용
+   - 기본 키 클래스는 Serializable 인터페이스를 구현해야 함. 이는 JPA에서 엔티티를 직렬화하여 네트워크 전      송이나 영속화에 사용
+   - 본 키 클래스는 equals와 hashCode 메서드를 오버라이드하여 객체 간의 동등성 비교에 사용. 이는           JPA에서 엔티티의 식별을 위해 필요함
+   - 기본 키 클래스는 인자가 없는(public no-arg) 기본 생성자를 가져야 함. JPA에서 엔티티를 로드하고        생성할 때 이 생성자가함ㅎ 사용
+   - 기본 키 클래스는 인자가 없는(public no-arg) 기본 생성자를 가져야 함. JPA에서 엔티티를 로드하고        생성할 때 이 생성자가 사용
