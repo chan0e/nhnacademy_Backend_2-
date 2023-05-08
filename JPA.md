@@ -209,6 +209,7 @@ public class OrderItem2 {
    - 기본 키 클래스는 인자가 없는(public no-arg) 기본 생성자를 가져야 함. JPA에서 엔티티를 로드하고        생성할 때 이 생성자가 사용
 
 + Entitiy의 생명주기
+
 ![image](https://user-images.githubusercontent.com/94053008/236833052-3a177fb6-1902-4b2f-b178-25766590a41d.png)
 
 
