@@ -212,5 +212,14 @@ public class OrderItem2 {
 
 ![image](https://user-images.githubusercontent.com/94053008/236833052-3a177fb6-1902-4b2f-b178-25766590a41d.png)
 
++ 비영속(new/transient)
+   -  영속성 컨텍스트와 전혀 관계 없는 상태
++ 영속(managed)
+   -  영속성 컨텍스트에 저장된 상태
++ 준영속(detached)
+   - 영속성 컨텍스트에 저장되었다가 분리된 상태
++ 삭제(removed)
+   - 삭제된 
+
 
 
