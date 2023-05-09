@@ -399,5 +399,56 @@ public class MemberDetail {
  + 영속성 추가시  @ManyToOne(cascade = CascadeType.PERSIST)
     - 이렇게 할시 test code작성때 MeberDetail Entity에 persist만 해줘도 연관관계에 설정되있어서 member entity도 psersist됨
 
+### 단방향 일대다(1:N 관계)
++ 다른 테이블에 외래 키가 있으면 연관관계 처리를 위해 추가적인 update 쿼리를 실행한다.
+   - 이를 해결하기 위해 양방향 맵핑을 사용
 
++ Member Entity
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "Members")
+public class Member {
+    @Id
+    @Column(name = "member_id")
+    private String id;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @OneToOne(mappedBy = "member")
+    private Locker locker;
+
+    // TODO #2: `mappedBy`를 이용해서 연관관계의 주인 설정.
+    @OneToMany(mappedBy = "member")
+    private List<MemberDetail> memberDetails;
+
+}
+
+```
+
++ MemberDetail
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "MemberDetails")
+public class MemberDetail {
+    @Id
+    @Column(name = "member_detail_id")
+    private Long id;
+
+    private String type;
+
+    private String description;
+
+    // TODO #1: 양방향 연관관계 설정
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+}
+```
++ 영속성 전이를 사용할려면 CascadeType.PERSIST 사용하면 됨
 
