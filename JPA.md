@@ -231,10 +231,17 @@ public class OrderItem2 {
  + 단반향 매핑
    - 한 객체에서 다른 객체로의 참조만 설정
    - @ManyToOne, @OneToMany, @OneToOne
+   - Annotation뒤에 CascadeType.PERSIST, CascadeType.ALL, CascadeType.PERSIST, CascadeType.REMOVE 를 붙임
+   - @ManyToOne, @OneToMany, @OneToOne
  + 양방향 매핑
    - 양쪽 객체가 서로를 참조하는 방식
    - 한 객체가 다른 객체를 참조하면서 동시에 다른 객체도 해당 객체를 참조
    - mappedBy 속성을 사용하여 연관관계의 주인을 지정
+
+
+> 실습코드
+```jva
+
 
 
 
