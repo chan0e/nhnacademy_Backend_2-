@@ -240,8 +240,164 @@ public class OrderItem2 {
 
 
 > 실습코드
-```jva
+```java
 
+```
+
+### 단방향 일대일(1:1) 관계
+![image](https://user-images.githubusercontent.com/94053008/236973537-b1efd3fd-0a77-4829-b0ba-97fda0840e82.png)
+
++ Member Entity
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "Members")
+public class Member {
+    @Id
+    @Column(name = "member_id")
+    private String id;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @OneToOne
+    @JoinColumn(name = "locker_id")
+    private Locker locker;
+
+}
+
+```
+
++ Locker Entitiy
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "Lockers")
+public class Locker {
+    @Id
+    @Column(name = "locker_id")
+    private Long id;
+
+    @Column(name = "locker_name")
+    private String name;
+
+}
+
+```
++ Locker에 Members의 foreign key가 있는 경우
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "Lockers")
+public class Locker {
+    @Id
+    @Column(name = "locker_id")
+    private Long id;
+
+    @Column(name = "locker_name")
+    private String name;
+
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+}
+```
+
+### 일대일(1:1) 식별관계
+
+![image](https://user-images.githubusercontent.com/94053008/236976031-897b9b7e-6c98-4ddc-a51c-96cecff95cb5.png)
+
++ Board Entity
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "Boards")
+public class Board {
+    @Id
+    @Column(name = "board_id")
+    private Long id;
+
+    private String title;
+
+}
+```
+
++ BoardDetail Entity
+   -  Foreing Key인 board에 @MapsId를 붙여 외래키이기도하지만 자신의 기본키라고 설정
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "BoardDetails")
+public class BoardDetail {
+    @Id
+    private Long boardId;
+
+    @MapsId
+    @OneToOne
+    @JoinColumn(name = "board_id")
+    private Board board;
+
+    private String content;
+
+}
+```
+
+### 단방향 다대일(N:1) 관계
+
+![image](https://user-images.githubusercontent.com/94053008/236976745-052f795a-00e2-40e1-ba15-ba8ac8bfa65a.png)
+
++ Member Entity
+
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "Members")
+public class Member {
+    @Id
+    @Column(name = "member_id")
+    private String id;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @OneToOne(mappedBy = "member")
+    private Locker locker;
+
+}
+```
+
++ MeberDetail Entity
+
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "MemberDetails")
+public class MemberDetail {
+    @Id
+    @Column(name = "member_detail_id")
+    private Long id;
+
+    private String type;
+
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+}
+
+```
+ + 영속성 추가시  @ManyToOne(cascade = CascadeType.PERSIST)
+    - 이렇게 할시 test code작성때 MeberDetail Entity에 persist만 해줘도 연관관계에 설정되있어서 member entity도 psersist됨
 
 
 
