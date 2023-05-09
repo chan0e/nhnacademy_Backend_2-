@@ -206,7 +206,7 @@ public class OrderItem2 {
    - 기본 키 클래스는 Serializable 인터페이스를 구현해야 함. 이는 JPA에서 엔티티를 직렬화하여 네트워크 전      송이나 영속화에 사용
    - 본 키 클래스는 equals와 hashCode 메서드를 오버라이드하여 객체 간의 동등성 비교에 사용. 이는           JPA에서 엔티티의 식별을 위해 필요함
    - 기본 키 클래스는 인자가 없는(public no-arg) 기본 생성자를 가져야 함. JPA에서 엔티티를 로드하고        생성할 때 이 생성자가 사용
-   - 기본 키 클래스는 인자가 없는(public no-arg) 기본 생성자를 가져야 함. JPA에서 엔티티를 로드하고        생성할 때 이 생성자가 사용
+  
 
 + Entitiy의 생명주기
 
@@ -451,4 +451,22 @@ public class MemberDetail {
 }
 ```
 + 영속성 전이를 사용할려면 CascadeType.PERSIST 사용하면 됨
+
+## Repository
++ Spring Framework에서 제공하는 인터페이스
++ DB와 상호작용하는 필요한 CRUD 기능을 제공하는 인터페이스
+
+### Repository interface Hierarchy
+![image](https://user-images.githubusercontent.com/94053008/237004281-1c22fe1f-054a-44b9-86e8-b0b7bec7d10d.png)
+
+
+### 특징
++ 데이터베이스 연산 추상화
++ 자동 구현
++ Query 메서드 지원
++ 페이징 및 정렬 지원
+
+### @Repository와 spring framework Repository 차이점
++ 
+
 
