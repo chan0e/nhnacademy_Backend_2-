@@ -170,6 +170,7 @@ hibernate.format_sql=true
 + @IdClass : 복합 키를 구성하는 여러개의 필드를 별도의 식별자 클래스로 지정, @Id를 사용해 복합키 필드와 엔티티 클래스간의 매핑을 함
 + @EmbeddedId : Entitiy 클래스의 필드에 지정
 + @Embeddable : 복합 Key 식별자 클래스에 지정
++ @Transient : 해당 필드를 영속화 하지 않는다느 의미
 
 
 > Annotation 실습코드
@@ -467,6 +468,21 @@ public class MemberDetail {
 + 페이징 및 정렬 지원
 
 ### @Repository와 spring framework Repository 차이점
-+ 
++
 
 
+## JPQL
++ JPA에서 사용되는 객체 지향 쿼리 언어
+
+### @Query
+```java
+  List<Order> findByOrderDateAfter(Date orderDate);
+
+    // TODO #1: `@Query`를 이용해서 위의 `findByOrderDateAfter()` 메서드와 동일한 기능을 하도록 JPQL을 작성하세요.
+    
+    @Query("select o from Order o where o.orderDate > ?1")
+    List<Order> getOrdersHavingOrderDateAfter(Date orderDate);
+```
++ "?1"은 첫번ㅉ 파라미터를 나타내고 "?2", "?3" 은 두번째, 세번째 파라미터를 나타내며 실행하면 파라미터값이 플레이스홀더를 대체함
+
+### @Modifying
