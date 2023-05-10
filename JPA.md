@@ -638,6 +638,7 @@ implementation class - ItemRepositoryImpl
    
    ### Entity Grapyh 
    + Entity를 조회하는 시점에 연관 Entity들을 함께 조회할 수 있도록 해주는 기능
+   + @Entity 테이블에 
 
    ```java
    @NamedEntityGraphs({
