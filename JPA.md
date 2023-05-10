@@ -483,7 +483,7 @@ public class MemberDetail {
     @Query("select o from Order o where o.orderDate > ?1")
     List<Order> getOrdersHavingOrderDateAfter(Date orderDate);
 ```
-+ "?1"은 첫번ㅉ 파라미터를 나타내고 "?2", "?3" 은 두번째, 세번째 파라미터를 나타내며 실행하면 파라미터값이 플레이스홀더를 대체함
++ "?1"은 첫번째 파라미터를 나타내고 "?2", "?3" 은 두번째, 세번째 파라미터를 나타내며 실행하면 파라미터값이 플레이스홀더를 대체함
 
 
 ## slice와 page의 차이저
@@ -500,8 +500,11 @@ int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemNa
 
 ### 메서드 이름 규칙에서 연관관계 Entity를 이용한 JOIN 쿼리 실행이 가능
 
-## DTO Projection
-+ Repo
+## DTO(Data Transfer Object) Projection
++ Repository 메서드가 Entity를 반환하는 것이 아니라 원하는 필드만 뽑아서 DTO로 반환하는 것
 
 
-## Slice와 Pag
+## Slice와 Page의 차이점
++ Page 인터페이스를 쓰게되면 전체 페이지수를 카운트해야함
++ Slice 인터페이스를 쓰게되면 전체 페이지수를 카운트를 안해도도된다.
++ Slice 에서 20개를 요청하면 21개를 가져와서 우리에게 20개를 보여주고 hasNext로 다음 데이터가 있는지 확인
