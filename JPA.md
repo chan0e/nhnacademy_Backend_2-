@@ -515,3 +515,94 @@ int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemNa
 ## Querydsl
 + 정적 타입을 이용해서 JPQL을 코드로 작성할 수 있도록 해주는 프레임워크
 + SQL과 비슷한 문법을 사용하여 쿼리를 작성할 수 있으며, 컴파일 시점에 오류를 검출할 수 있어 런타임 오류를 방지하고 개발자의 생산성을 높임
+
+### 설정
+```xml
+    <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+...
+
+ <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.3</version>
+                <configuration>
+                    <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/annotations</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+```
+entity - Item
+repositroy - ItemRepository extends JpaRepostiryo<item,Long>
+custom repositroy = ItemReposirtoryCustom
+
++ ..Impl은 스프링프레임워크에서 정 Impl붙은 클래스를 찾음
+implementation class - ItemRepositoryImpl
+
+
+### Spring Data JPA + Querydsl
++ QuerydslRepositorySupport
+   - todo : cumstom repositroy interface 생성
+   ```java
+   @NoRepositoryBean
+   public interface ItemRepositoryCustom {
+    List<Item> getItemsAfterOrderDate(LocalDateTime orderDate);
+
+   }
+
+   ```
+   
+   - todo : custom repository 구현
+   ```java
+   public class ItemRepositoryImpl extends QuerydslRepositorySupport implements ItemRepositoryCustom {
+    public ItemRepositoryImpl() {
+        super(Item.class);
+    }
+
+    @Override
+    public List<Item> getItemsAfterOrderDate(LocalDateTime orderDate) {
+        QItem item = QItem.item;
+        QOrderItem orderItem = QOrderItem.orderItem;
+        QOrder order = QOrder.order;
+
+        Date baseDate = Date.from(orderDate.toInstant(ZoneOffset.of("+09:00")));
+
+        return from(item)
+            .leftJoin(item.orderItems, orderItem)
+            .innerJoin(orderItem.order, order)
+            .where(order.orderDate.after(baseDate))
+            .select(item)
+            .fetch();
+    }
+
+   }
+   ```
+   
+   - todo : 기본 Repositroy interface가 Custom Repository interface를 상속받도록 변경
+   ```java
+   public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositoryCustom {
+   ....
+   }
+   ```
+
