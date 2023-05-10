@@ -486,3 +486,13 @@ public class MemberDetail {
 + "?1"은 첫번ㅉ 파라미터를 나타내고 "?2", "?3" 은 두번째, 세번째 파라미터를 나타내며 실행하면 파라미터값이 플레이스홀더를 대체함
 
 ### @Modifying
++ @Query를 통해 insert, update, delete 쿼리를 수행할 경우 붙여줘야 함
+```java
+@Modifying
+@Query("update Item i set i.itemName = :itemName where i.itemId = :itemId")
+int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemName);
+```
+
+
+
+### 메서드 이름 규칙에서 연관관계 Entity를 이용한 JOIN 쿼리 실행이 가능
