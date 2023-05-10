@@ -493,8 +493,6 @@ public class MemberDetail {
 int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemName);
 ```
 
-
-
 ### 메서드 이름 규칙에서 연관관계 Entity를 이용한 JOIN 쿼리 실행이 가능
 ```java
  List<Item> findByOrderItems_QuantityGreaterThan(Integer quantity);
@@ -504,11 +502,16 @@ int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemNa
 
 ```
 
-## DTO(Data Transfer Object) Projection
+### DTO(Data Transfer Object) Projection
 + Repository 메서드가 Entity를 반환하는 것이 아니라 원하는 필드만 뽑아서 DTO로 반환하는 것
 
 
-## Slice와 Page의 차이점
+### Slice와 Page의 차이점
 + Page 인터페이스를 쓰게되면 전체 페이지수를 카운트해야함
 + Slice 인터페이스를 쓰게되면 전체 페이지수를 카운트를 안해도도된다.
 + Slice 에서 20개를 요청하면 21개를 가져와서 우리에게 20개를 보여주고 hasNext로 다음 데이터가 있는지 확인
+
+
+## Querydsl
++ 정적 타입을 이용해서 JPQL을 코드로 작성할 수 있도록 해주는 프레임워크
++ SQL과 비슷한 문법을 사용하여 쿼리를 작성할 수 있으며, 컴파일 시점에 오류를 검출할 수 있어 런타임 오류를 방지하고 개발자의 생산성을 높임
