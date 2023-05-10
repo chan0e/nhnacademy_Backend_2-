@@ -553,9 +553,9 @@ int updateItemName(@Param("itemId") Long itemId, @Param("itemName")String itemNa
             </plugin>
 
 ```
-entity - Item
-repositroy - ItemRepository extends JpaRepostiryo<item,Long>
-custom repositroy = ItemReposirtoryCustom
++ entity - Item
++ repositroy - ItemRepository extends JpaRepository<item,Long>
++ custom repositroy = ItemReposirtoryCustom
 
 + ..Impl은 스프링프레임워크에서 정 Impl붙은 클래스를 찾음
 implementation class - ItemRepositoryImpl
@@ -563,7 +563,7 @@ implementation class - ItemRepositoryImpl
 
 ### Spring Data JPA + Querydsl
 + QuerydslRepositorySupport
-   - todo : cumstom repositroy interface 생성
+   - todo1 : custom repositroy interface 생성
    ```java
    @NoRepositoryBean
    public interface ItemRepositoryCustom {
@@ -573,7 +573,7 @@ implementation class - ItemRepositoryImpl
 
    ```
    
-   - todo : custom repository 구현
+   - todo2 : custom repository 구현
    ```java
    public class ItemRepositoryImpl extends QuerydslRepositorySupport implements ItemRepositoryCustom {
     public ItemRepositoryImpl() {
@@ -599,10 +599,56 @@ implementation class - ItemRepositoryImpl
    }
    ```
    
-   - todo : 기본 Repositroy interface가 Custom Repository interface를 상속받도록 변경
+   - todo3 : 기본 Repositroy interface가 Custom Repository interface를 상속받도록 변경
    ```java
    public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositoryCustom {
    ....
    }
    ```
+   
+   ## 쿼리 한번으로 N건의 레코드를 가져왔을때, 연관관계 Entity를 가져오기 위해 쿼리를 N번 추가 수행하는 문제
+   
+   ### JPQL join fetch
+   ```java
+    @Query("select i "
+        + "from Item i "
+        + "left outer join fetch i.orderItems oi "
+        + "inner join fetch oi.order o")
+    List<Item> getAllItemsWithAssociations();
+   ```
+   
+   ### Querydel join fetch
+   
+   ```java
+   @Override
+    public List<Member> getMembersWithAssociation() {
+        QMember member = QMember.member;
+        QLocker locker = QLocker.locker;
+        QMemberDetail memberDetail = QMemberDetail.memberDetail;
+
+
+        return from(member)
+            .innerJoin(member.locker, locker).fetchJoin()
+            .leftJoin(member.memberDetails, memberDetail).fetchJoin()
+            .fetch();
+    }
+   ```
+   
+   + Fetch Join + Pagination을 같이사용하면 계속 모든 레코드를 가져오기 때문에 장애가 일어나기때문에 이용은 하지않는다.
+   
+   ### Entity Grapyh 
+   + Entity를 조회하는 시점에 연관 Entity들을 함께 조회할 수 있도록 해주는 기능
+
+   ```java
+   @NamedEntityGraphs({
+    @NamedEntityGraph(name = "memberWithLocker", attributeNodes = {
+        @NamedAttributeNode("locker")
+    }),
+    @NamedEntityGraph(name = "memberWithLockerAndMemberDetails", attributeNodes = {
+        @NamedAttributeNode("locker"),
+        @NamedAttributeNode("memberDetails")
+    })
+   })
+   ```
+   
 
