@@ -36,3 +36,20 @@
 + Spring 기반 애플리케이션을 위해 선언적 보안 기능을 제공하는 프레임워크
 + Servlet Filter(Servlet 기반 애플리케이션) 및 AOP 기반
 + 
+
+.... 중간 개념들은 좀더 공부후 작성예정....
+
+
+
+## 인증기본 개념
+
+### Authentication 
+
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/ae7f22e3-e4c1-4e27-b3bc-5b4506f754e1)
+
+
+
+### Authorization
+
+### SecurityContext
++ ThreadLocal에 SecurityContext저장
