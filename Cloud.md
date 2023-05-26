@@ -85,5 +85,5 @@ sudo docker run -d --name=myapp -p 8080:8080 my-war-app
 ```
 sudo docker ps
 ```
-
++ 마지막으로 Docker hub로 push 해줌
 
