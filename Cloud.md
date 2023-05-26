@@ -50,5 +50,40 @@
 + 컨테이너는 이미지를 실행한 상태라고 볼수 있고 추가되거나 변하는 값은 컨테이너에 저장
 + 같은 이미지에서 여러개의 컨테이너를 생성할 수 있음
 
+###### 리눅스환경에서 DOCKER실습을 하였고 Intellij에서 나온 war 파일을 가지고 배포해보는 연습을 해봤다
+###### DB는 link를 이용해서 연결해주는걸로 알고있는데 지금 실습에서는 내가 사용해보지않음
+### 실습
++ 처음에 로컬파일에 있는 war파일을 가상머신 주소에 있는 파일위치로 scp를 이용해 복사해줌
++ Docker tomcat 다운로드(프로젝트내에서 돌린 tomcat 버전과 맞춰줘야함... 이걸로 삽질 5시간정도 했다.)
+```
+sudo docker pull tomcat:9
+```
++ image로 잘 올라갔나 확인
+```
+sudo docker images
+```
+
++ Dockerfile을 만들어줌
+```vi
+FROM tomcat:9
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+ENV JAVA_OPTS='-Dspring.profiles.active=local'
+COPY ./ROOT.war /usr/local/tomcat/webapps/ROOT.war
+CMD ["catalina.sh", "run"]
+```
+
++ Dockerfile에 있는 경로에서 도커파일을 my-war-app빌드해줌 -> image로 올라감
+```
+sudo docker build -t my-war-app .
+```
++ 실행해줌 포트는 8080
+```
+sudo docker run -d --name=myapp -p 8080:8080 my-war-app
+```
+
++ 잘 올라갔는지 확인
+```
+sudo docker ps
+```
 
 
