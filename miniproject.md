@@ -31,13 +31,14 @@
 + MileStone : Project 진척 상황을 나타내는 이정표입니다. Task 에 한개의 MileStone 을 설정할 수 있습니다.
 + Tag, MileStone 는 프로젝트 멤버에 의해 삭제될 수 있으며 설정된 Task 는 Tag, MileStone이 제거됩니다.
 + Project 멤버는 Task 에 Comment 를 생성할 수 있습니다.
+
 + Comment 를 생성한 사용자는 Comment 를 수정, 삭제 할 수 있습니다.
 + Task-Api, Project, Task, Comment 의 구조는 다음과 같습니다.
 
-https://nhnent.dooray.com/plantuml/img/LOv13i8m30JlUONFaJWqvG55_G07Fc2Q28LWEtBC_nk45EXjrgDTkPNC5HK9xhYLXygRuoelKJ15RbqbDhSqGpNA70chyt33LawNcfttS5Lvfiscpb_ne_3dmxZE7_Am2b7VdWuf7D8yEcUt98xZWnq0![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/7b368e46-2e16-43b2-a886-46c684feb3af)
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/624bb0d1-d902-46c0-bf7c-aea5dbe4f10d)
 
 ### 설계
-https://nhnent.dooray.com/plantuml/img/TOvD2i8m48NtSugvm2pi0GJHejsecEnA5zCVQccRr2HIYdXtqo2b2AxcpVTc7i-sZHhOS8yv5srjz5ELUzrfWywmijwgb8EJb5SaJ8_igf6d31Q5LEfHqHPliP2RFpnQSzFKTnUCGo80mfYpHIn4SZbJ0Dbi-41ATqNXExdTq6G1HPHAjctOOP58XFra7vsliFfOS0HGikESRVMzmnUyVs4Ku0S0![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/f0398ef3-4211-49fe-9f37-8e4b0c0106e5)
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/238c3557-2b28-4d49-b098-c9e8e4949147)
 
 + gateway 는 모든 서비스 요청을 받으며 프레젠테이션 기능을 담당합니다.
 + TemplateEngine(Thymeleaf) 사용하여 화면을 표시합니다.
@@ -60,3 +61,7 @@ https://nhnent.dooray.com/plantuml/img/TOvD2i8m48NtSugvm2pi0GJHejsecEnA5zCVQccRr
 + java -jar 로 실행가능해야 합니다.
 + *.http 파일 생성
 + REST-API 실행 요청 및 결과 문서
+
+
+### 품질평가
++ 정적 분석기(Sonar Qube)
