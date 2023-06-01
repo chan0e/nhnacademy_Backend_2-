@@ -182,9 +182,65 @@ spring.thymeleaf.suffix=.html
 
 ![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/5c4bc303-425a-40f8-83df-f6af789e31c6)
 
-#### @ㅊ
+#### @ConditionalOnXXX (2)
+
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/9cbf610b-5544-4177-9711-b79ee23e2bbc)
 
 
+
+### Externalized Configuration
+
+#### @ConfigurationProperties 바인딩
+```java
+@ConfigurationProperties(prefix = "dooray")
+@Getter
+@Setter
+public class DoorayProperties {
+
+    String hookUrl;
+
+}
+```
+
++ properties
+```properties
+dooray.hook-url={url}
+```
+
++ 자동완성 기능 maven
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+
+#### 바인딩 가능한 속성
+
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/1f4810a8-1246-4a89-85ad-8d7a8e774f2f)
+
+#### @ConfigurationProperties 활성화
++ @ConfigurationProperties 를 활성화 하여 빈으로 등록해야 사용 가능
+
+##### @ConfigurationPropertiesScan
++ 설정한 클래스의 base package 하위의 모든 @ConfigurationProperties를 스캔
+
+##### @EnableConfigurationProperties
++ value에 지정한 ConfigurationProperties 클래스를 Bean 으로 활성화
+
+```java
+@SpringBootApplication
+@EnableConfigurationProperties(value= SystemNameProperties.class) 
+public class StudentApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(StudentApplication.class, args);
+    }
+}
+
+```
+
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/b0da5903-6e73-412c-a9b5-2381d8e53e07)
 
 
 
