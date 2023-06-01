@@ -121,6 +121,72 @@ mysql> create database student_test;
 
 #### dependency 추가
 
-```ㅜ
++ mysql-connector-java 추가
 ```
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.48</version>
+</dependency>
 ```
+
+#### application.properties 설정
++ JPA 테이블 생성 및 SQL 로깅
+```properties
+spring.jpa.generate-ddl=true 
+spring.jpa.show-sql=true
+```
+
++ datasource
+```properties
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/student_test?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+spring.datasource.username=root
+spring.datasource.password=test
+
+```
+
+### RestApi 개발
+...
+
+### Spring-Boot-view-template
+
+#### Thymeleaf의 사용 -> html 렌더링
+```xml
+<dependency>
+ <groupId>org.springframework.boot</groupId>
+ <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
+
++ properties
+```properties
+spring.thymeleaf.enabled=true
+spring.thymeleaf.prefix=classpath:/templates/main/
+spring.thymeleaf.suffix=.html
+```
+
+### Dependency management
+
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/caa6a092-d441-4712-ba3f-339012f8cebe)
+
+### @Conditional
++ Spring Framework 4.0 부터 제공
++ 설정된 모든 Condition 인터페이스의 조건이 true인 경우 동작
+
+#### @ConditionalOnXXX (1)
++ spring-boot 가 제공하는 @Conditional의 확장
+
+![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/5c4bc303-425a-40f8-83df-f6af789e31c6)
+
+#### @ㅊ
+
+
+
+
+
+
+
