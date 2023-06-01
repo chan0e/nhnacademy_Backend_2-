@@ -51,4 +51,76 @@
 ![image](https://github.com/chan0e/nhnacademy_Backend3-/assets/94053008/dfeee2e4-6181-4788-8320-a2bd0bf6c032)
 
 
+### Dependency Injection 방식 3가지
++ 생성자 주입
+  - 생성자르 선언하면 인자에 객체 주입
+  - 권장하는 방식
 
+```java
+   private final StudentRepository studentRepository;
+
+    public NhnStudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+```
++ @Autowired
+  - 클래스 변수에 Annotation을 설정항 객체 주입
+
+```java
+  @Autowired
+    private StudentRepository studentRepository;
+
+```
++ Setter
+  - setter 메서드를 선언항 객체 주입
+
+```java
+@Autowired
+    private StudentRepository studentRepository;
+
+    public void setStudentRepository(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;   
+    } 
+```
+
+### Mysql 사용
+#### 실습
++ mysql에 데이터를 저장하도록함
++ mysql은 docker , 원격 등 으로 실행
+
+#### Mysql준비 -> docker
+
++ ARM 기반 (저자는 m2 맥북기준) 설치가 안되어있다면 다음 과정을 따라야 함
+```
+1. brew install --cask docker 입력
+2. 도커 컨테이너 실행
+3. docker run --platform linux/amd64 --name edu-mysql -e MYSQL_ROOT_PASSWORD=test -d -p3306:3306 mysql:5.7.35
+4. docker exec -it edu-mysql bash
+5. mysql -u root -p
+6. 비밀번호 test 입력
+7. create database student_test;
+```
+
++ Mysql 실행
+```
+$ docker run --name edu-mysql -e MYSQL_ROOT_PASSWORD=test -d -p3306:3306 mysql:5.7.35 --character-set-server=utf8 --collation-server=utf8_general_ci
+```
+
+```
+$ docker run --platform linux/amd64 --name edu-mysql -e MYSQL_ROOT_PASSWORD=test -d -p3306:3306 mysql:5.7.35 --character-set-server=utf8 --collation-server=utf8_general_ci
+```
+
++ 접속 테스트
+```
+$ mysql -u root -p -P3306 -h 127.0.0.1
+```
++ DB 생성
+```
+mysql> create database student_test;
+```
+
+#### dependency 추가
+
+```ㅜ
+```
+```
