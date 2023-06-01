@@ -40,7 +40,7 @@
   - 자동설정 기능을 활성화
   - claaspath에 라이브러리가 존재하면 자동으로 Bean 을 설정
 
-+ @ComponentScan
++ @ComponentScan 
   - basePackage하위의 컴포넌트를 스캔하여 Bean 등록
 
 + @SpringBootConfiguration
