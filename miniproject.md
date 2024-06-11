@@ -68,4 +68,6 @@
 
 
 ### 프로젝트 코드 파일 경로
-+ Task 부분 : https://github.com/chan0e/taskApi-Result.git 
++ Account 부분 : https://github.com/chan0e/account_api_1.git
++ Task 부분 : https://github.com/chan0e/taskApi-Result.git
++ Gateway 부분 : https://github.com/chan0e/gatewayApi.git
